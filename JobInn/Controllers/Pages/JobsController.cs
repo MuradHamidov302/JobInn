@@ -8,20 +8,29 @@ using System.Web;
 using System.Web.Mvc;
 using JobInn.Models;
 using JobInn.Models.TablePage.Employers;
+using JobInn.Models.TablePage;
 
 namespace JobInn.Controllers.Pages
 {
+    [Authorize]
     public class JobsController : Controller
     {
+        HomeViewModel vm = new HomeViewModel();
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Jobs
+        [AllowAnonymous]
         public ActionResult Index()
         {
-            var jobs = db.job.Include(j => j.city).Include(j => j.company).Include(j => j.jobcategory).Include(j => j.jobtype).Include(j => j.user);
-            return View(jobs.ToList());
+            vm.city = db.city.ToList();
+            vm.blog = db.blog.ToList();
+            vm.job = db.job.ToList();
+            vm.jobcategory = db.jobcategory.ToList();
+            vm.jobtype=db.jobtype.ToList();
+            return View(vm);
         }
 
+        [AllowAnonymous]
         // GET: Jobs/Details/5
         public ActionResult Details(int? id)
         {
@@ -36,7 +45,7 @@ namespace JobInn.Controllers.Pages
             }
             return View(job);
         }
-
+        [Authorize]
         // GET: Jobs/Create
         public ActionResult Create()
         {
@@ -47,13 +56,13 @@ namespace JobInn.Controllers.Pages
             ViewBag.user_id = new SelectList(db.Users, "Id", "first_name");
             return View();
         }
-
+        [Authorize]
         // POST: Jobs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "job_id,concerperson_name,email,job_title,location,city_id,jobcategory_id,salary_package,jobtype_id,clossing_date,company_id,user_id")] Job job)
+        public ActionResult Create([Bind(Include = "job_id,concerperson_name,email,job_title,location,city_id,jobcategory_id,salary_package,jobtype_id,clossing_date,company_id,user_id,description")] Job job)
         {
             if (ModelState.IsValid)
             {

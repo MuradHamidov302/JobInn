@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201712101231559_create-database.Designer.cs">
       <DependentUpon>201712101231559_create-database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712101627534_add-database-jobdescriptionfield.cs" />
+    <Compile Include="Migrations\201712101627534_add-database-jobdescriptionfield.Designer.cs">
+      <DependentUpon>201712101627534_add-database-jobdescriptionfield.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -481,6 +485,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712101231559_create-database.resx">
       <DependentUpon>201712101231559_create-database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712101627534_add-database-jobdescriptionfield.resx">
+      <DependentUpon>201712101627534_add-database-jobdescriptionfield.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

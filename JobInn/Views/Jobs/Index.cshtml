@@ -1,94 +1,281 @@
-﻿@model IEnumerable<JobInn.Models.TablePage.Employers.Job>
+﻿@model JobInn.Models.TablePage.HomeViewModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.city.city_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.company.company_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.jobcategory.jobcategory_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.jobtype.jobtype_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.user.first_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.concerperson_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.job_title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.salary_package)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.clossing_date)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.city.city_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.company.company_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.jobcategory.jobcategory_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.jobtype.jobtype_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.user.first_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.concerperson_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.job_title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.salary_package)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.clossing_date)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.job_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.job_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.job_id })
-        </td>
-    </tr>
-}
+<!--WRAPPER START-->
 
-</table>
+<div id="wrapper">
+
+    <!--HEADER START-->
+    <!--HEADER END-->
+    <!--INNER BANNER START-->
+
+    <section id="inner-banner">
+
+        <div class="container">
+
+            <h1>Latest Jobs</h1>
+
+        </div>
+
+    </section>
+
+    <!--INNER BANNER END-->
+    <!--POPULAR JOB CATEGPRIES START-->
+
+    <section class="popular-job-caregries popular-categories candidates-listing">
+
+        <div class="holder">
+
+            <div class="container">
+
+                <h4>Popular Job Categories</h4>
+
+                <div id="popular-job-slider" class="owl-carousel owl-theme">
+
+                    @foreach (var item in Model.jobcategory)
+                    {
+                        <div class="item">
+
+                            <div class="box">
+                                <img alt="img" src="~/Content/images/categories-icon-1.png">
+
+                                <h4><a href="#">@item.jobcategory_name</a></h4>
+
+                                <strong>@item.job.Count Jobs</strong>
+
+                                <p>Available in @item.jobcategory_name</p>
+
+                            </div>
+
+                        </div>
+                    }
+
+                  
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--POPULAR JOB CATEGPRIES END-->
+    <!--MAIN START-->
+
+    <div id="main">
+
+        <!--SEARCH BAR SECTION START-->
+
+        <section class="candidates-search-bar">
+
+            <div class="container">
+
+                <form action="#">
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+
+                            <input type="text" placeholder="Enter Job Title, Skills or Company">
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <input type="text" placeholder="Enter City, State, Province or Country">
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <input type="text" placeholder="Category">
+
+                        </div>
+
+                        <div class="col-md-1">
+
+                            <button type="submit"><i class="fa fa-search"></i></button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+        <!--SEARCH BAR SECTION END-->
+        <!--RECENT JOB SECTION START-->
+
+        <section class="recent-row padd-tb">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-9 col-sm-8">
+
+                        <div class="check-filter">
+
+                            <form action="#">
+
+                                <ul>
+                                    <li>
+
+                                        <input id="id1" type="checkbox" />
+
+                                        <label>All Jobs</label>
+
+                                    </li>
+                                    @foreach (var item in Model.jobtype)
+                                    {
+                                        <li>
+
+                                            <input id="id2" type="checkbox" />
+
+                                            <label>@item.jobtype_name</label>
+
+                                        </li>
+                                    }
+
+                               
+
+                                </ul>
+
+                            </form>
+
+                        </div>
+
+                        <div id="content-area">
+
+                            <h2>Latest Jobs</h2>
+
+                            <ul id="myList">
+
+                                @foreach (var item in Model.job)
+                                {
+                                    <li>
+
+                                        <div class="box">
+
+                                            <div class="thumb"><a href="~/Jobs/Details/@item.job_id"><img src="~/Content/images/recent-job-thumb-1.jpg" alt="img"></a></div>
+
+                                            <div class="text-col">
+
+                                                <h4><a href="~/Jobs/Details/@item.job_id">@item.job_title</a></h4>
+                                                @if (item.company_id != null)
+                                                {
+                                                    <p>@item.company.company_name</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>@item.concerperson_name</p>
+                                                }
+
+                                                <a href="~/Jobs/Details/@item.job_id" class="text"><i class="fa fa-map-marker"></i>@item.location</a> <a href="~/Jobs/Details/@item.job_id" class="text"><i class="fa fa-calendar"></i>@item.clossing_date </a>
+                                            </div>
+
+                                            <strong class="price"><i class="fa fa-money"></i>@item.salary_package</strong> <a href="~/Jobs/Details/@item.job_id" class="btn-1 @item.jobtype.jobtypecolor.color_class ripple">@item.jobtype.jobtype_name</a>
+                                        </div>
+
+                                    </li>
+                                }
+
+
+                            </ul>
+
+                            <div id="loadMore"> <a href="#" class="load-more"><i class="fa fa-user"></i>Load More Jobs</a></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-4">
+
+                        <h2>Featured Jobs</h2>
+
+                        <aside>
+
+                            <div class="sidebar">
+
+                                <div class="box">
+
+                                    <div class="thumb">
+                                        <a href="#"><img src="images/features-img-1.jpg" alt="img"></a>
+
+                                        <div class="caption"><img src="images/envato-text.png" alt="envato"></div>
+
+                                    </div>
+
+                                    <div class="text-box">
+                                        <a href="#" class="btn-time">Part Time</a>
+
+                                        <h4><a href="#">UI/UX Visual Designers</a></h4>
+
+                                        <a href="#" class="text"><i class="fa fa-map-marker"></i>Moorgate, London</a> <a href="#" class="text"><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </a> <strong class="price"><i class="fa fa-money"></i>$4000 - $5000</strong> <a href="#" class="btn-apply">Apply for this Job</a>
+                                    </div>
+
+                                </div>
+
+                                <h2>Jobs Gallery</h2>
+
+                                <div class="sidebar-jobs">
+
+                                    <ul>
+
+                                        <li> <a href="#">General Compliance Officer</a> <span><i class="fa fa-map-marker"></i>Arlington, VA </span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                        <li> <a href="#">Medical Transcrption</a> <span><i class="fa fa-map-marker"></i>San Francisco, CA</span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                        <li> <a href="#">Support Coordinator</a> <span><i class="fa fa-map-marker"></i>Moorgate, London</span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                        <li> <a href="#">Mobile Application Developer</a> <span><i class="fa fa-map-marker"></i>New York, NY</span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                        <li> <a href="#">2D/3D Graphic Designer</a> <span><i class="fa fa-map-marker"></i>Moorgate, London</span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                        <li> <a href="#">Corporate Sales Executive</a> <span><i class="fa fa-map-marker"></i>Washington, DC </span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                        <li> <a href="#">International Tour Consultant</a> <span><i class="fa fa-map-marker"></i>Nationwide Anywhere </span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                        <li> <a href="#">Marketing Strategist</a> <span><i class="fa fa-map-marker"></i>Moorgate, London</span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!--RECENT JOB SECTION END-->
+
+    </div>
+
+    <!--MAIN END-->
+
+
+
+
+</div>
+
+<!--WRAPPER END-->
+
+
+
+

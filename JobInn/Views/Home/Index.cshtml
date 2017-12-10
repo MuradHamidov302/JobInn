@@ -67,7 +67,7 @@
 
             <div class="btn-row">
                 <a href="job-seekers.html"><i class="fa fa-user"></i>Mən iş axtarıram</a>
-                <a href="employers.html"><i class="fa fa-building-o"></i>Mən iş elanı verirəm</a>
+                <a href="~/Jobs/Create"><i class="fa fa-building-o"></i>Mən iş elanı verirəm</a>
             </div>
 
         </div>
@@ -154,11 +154,11 @@
 
                                     <div class="box">
 
-                                        <div class="thumb"><a href="#"><img src="~/Content/images/recent-job-thumb-1.jpg" alt="img"></a></div>
+                                        <div class="thumb"><a href="~/Jobs/Details/@item.job_id"><img src="~/Content/images/recent-job-thumb-1.jpg" alt="img"></a></div>
 
                                         <div class="text-col">
 
-                                            <h4><a href="#">@item.job_title</a></h4>
+                                            <h4><a href="~/Jobs/Details/@item.job_id">@item.job_title</a></h4>
                                             @if (item.company_id != null)
                                             {
                                                 <p>@item.company.company_name</p>
@@ -168,13 +168,14 @@
                                                 <p>@item.concerperson_name</p>
                                             }
 
-                                            <a href="#" class="text"><i class="fa fa-map-marker"></i>@item.location</a> <a href="#" class="text"><i class="fa fa-calendar"></i>@item.clossing_date </a>
+                                            <a href="~/Jobs/Details/@item.job_id" class="text"><i class="fa fa-map-marker"></i>@item.location</a> <a href="~/Jobs/Details/@item.job_id" class="text"><i class="fa fa-calendar"></i>@item.clossing_date </a>
                                         </div>
 
-                                        <strong class="price"><i class="fa fa-money"></i>@item.salary_package</strong> <a href="#" class="btn-1 @item.jobtype.jobtypecolor.color_class ripple">@item.jobtype.jobtype_name</a>
+                                        <strong class="price"><i class="fa fa-money"></i>@item.salary_package</strong> <a href="~/Jobs/Details/@item.job_id" class="btn-1 @item.jobtype.jobtypecolor.color_class ripple">@item.jobtype.jobtype_name</a>
                                     </div>
 
                                 </li>
+
                             }
 
 

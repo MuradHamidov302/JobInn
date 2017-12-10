@@ -13,5 +13,6 @@ namespace JobInn.Models.TablePage
         public IEnumerable<JobCategory> jobcategory { get; set; }
         public IEnumerable<Job> job { get; set; }
         public IEnumerable<Blog> blog { get; set; }
+        public IEnumerable<JobType> jobtype { get; set; }
     }
 }

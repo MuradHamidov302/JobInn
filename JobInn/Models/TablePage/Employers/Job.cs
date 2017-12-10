@@ -42,6 +42,8 @@ namespace JobInn.Models.TablePage.Employers
         [Display(Name = "Şirkətin adı")]
         public int? company_id { get; set; }
         public string user_id { get; set; }
+        [Column(TypeName = "ntext")]
+        public string description { get; set; }
 
         [ForeignKey("city_id")]
         public virtual City city { get; set; }

@@ -5,112 +5,275 @@
     Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Job</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.concerperson_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.concerperson_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.concerperson_name, "", new { @class = "text-danger" })
-            </div>
+
+<!--WRAPPER START-->
+
+<div id="wrapper">
+
+
+
+
+
+    <!--INNER BANNER START-->
+
+    <section id="inner-banner">
+
+        <div class="container">
+
+            <h1>Employers</h1>
+
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+    </section>
+
+    <!--INNER BANNER END-->
+    <!--MAIN START-->
+
+    <div id="main">
+
+
+
+        <!--RESUME PROCESS SECTION START-->
+
+        <section class="resume-process padd-tb">
+
+            <div class="container">
+
+                <h2>Post your Resume &amp; Apply Online for Jobs in all over the World</h2>
+
+                <strong>Create your professional resume with online resume builder and start applying for best jobs in all over the World</strong>
+
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-6">
+
+                        <div class="option-box">
+
+                            <div class="icon-box icon-colo-1"><i class="fa fa-files-o"></i></div>
+
+                            <h4>Create Your Resume</h4>
+
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusant.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+
+                        <div class="option-box">
+
+                            <div class="icon-box icon-colo-2"><i class="fa fa-bell"></i></div>
+
+                            <h4>Get Daily Job Alerts</h4>
+
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+
+                        <div class="option-box">
+
+                            <div class="icon-box icon-colo-3"><i class="fa fa-paper-plane-o"></i></div>
+
+                            <h4>Apply for Your Jobs</h4>
+
+                            <p>Duis autem vel eum iriure dolor in hendre in vulputate velit esse molestie.</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+
+                        <div class="option-box">
+
+                            <div class="icon-box icon-colo-4"><i class="fa fa-check-square-o"></i></div>
+
+                            <h4>Get Hired</h4>
+
+                            <p>Dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+
+        </section>
+
+        <!--RESUME PROCESS SECTION END-->
+        <!--ACCOUNT OPTION SECTION START-->
+
+        @*<section class="account-option">
+
+            <div class="container">
+
+                <div class="inner-box">
+
+                    <div class="text-box">
+
+                        <h4>Have an Account?</h4>
+
+                        <p>
+                            If you don’t have an account you can create one below by entering your email address.
+
+                            A password will be automatically emailed to you.
+                        </p>
+
+                    </div>
+
+                    <a href="~/Account/Register" class="btn-style-1"><i class="fa fa-sign-in"></i>Sign in Now</a>
+                </div>
+
+            </div>
+
+        </section>*@
+
+        <!--ACCOUNT OPTION SECTION END-->
+
+        <section class="resum-form padd-tb">
+
+            <div class="container">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                    <div class="row">
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <label>Concern Person Name *</label>
+                            @Html.EditorFor(model => model.concerperson_name, new { htmlAttributes = new { @class = "form-control" , placeholder = "Concern Person Name" } })
+                           
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <label>Your Email *</label>
+                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", placeholder = "you@jobsalerts.com" } })
+                          
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <label>Job Title *</label>
+                            @Html.EditorFor(model => model.job_title, new { htmlAttributes = new { @class = "form-control", placeholder = "e.g. “App Developer”" } })
+                       
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <label>Location *</label>
+                            @Html.EditorFor(model => model.location, new { htmlAttributes = new { @class = "form-control" ,placeholder = "e.g. New York, Australia, London”" } })
+                       
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <label>Job Region</label>
+                            
+                             @Html.DropDownList("city_id", null, htmlAttributes: new { @class = "form-control" })
+                                 
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <label>Job Category *</label>
+                            @Html.DropDownList("jobcategory_id", null, htmlAttributes: new { @class = "form-control" })
+
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <label>Salary Package</label>
+                            @Html.EditorFor(model => model.salary_package, new { htmlAttributes = new { @class = "form-control", placeholder = "e.g. $7000 - 9000" } })
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <label>Job Type</label>
+
+                            
+                                @Html.DropDownList("jobtype_id", null, htmlAttributes: new { @class = "form-control" })
+                             
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <label>Company </label>
+                            @Html.DropDownList("company_id", null, htmlAttributes: new { @class = "form-control" })
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+
+                            <label>Clossing Date</label>
+                            @Html.EditorFor(model => model.clossing_date, new { htmlAttributes = new { @class = "form-control" , type = "Date" ,placeholder = "yyyy-mm-dd" } })
+
+
+                        </div>
+                      
+
+                        <div class="col-md-12">
+
+                            <h4>Description</h4>
+
+                            <div class="text-editor-box">
+
+                                @Html.TextAreaFor(model => model.description, new { htmlAttributes = new { @class = "form-control txtEditor" } })
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.user_id, "user_id", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("user_id", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.user_id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+
+                            <div class="btn-col">
+
+                                <input type="submit" value="Preview Your Job Post Details">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    
+                }
+
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.job_title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.job_title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.job_title, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        </section>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.location, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.location, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.location, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <!--RESUME FORM END-->
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.city_id, "city_id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("city_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.city_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.jobcategory_id, "jobcategory_id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("jobcategory_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.jobcategory_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.salary_package, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.salary_package, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.salary_package, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.jobtype_id, "jobtype_id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("jobtype_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.jobtype_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.clossing_date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.clossing_date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.clossing_date, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.company_id, "company_id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("company_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.company_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.user_id, "user_id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("user_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.user_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <!--MAIN END-->
+    </div>

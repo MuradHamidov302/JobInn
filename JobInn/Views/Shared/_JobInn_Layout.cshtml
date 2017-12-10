@@ -318,49 +318,8 @@
 
                 <!--USER OPTION COLUMN START-->
 
-                <div class="user-option-col">
-
-                    <div class="thumb">
-
-                        <div class="dropdown">
-
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <img src="~/Content/images/user-img.png" alt="img"></button>
-
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-
-                                <li><a href="#">Mənim Profilim</a></li>
-
-                                <li><a href="#">Şifrəni Dəyiş</a></li>
-
-                                <li><a href="#">Profili Dəyiş</a></li>
-
-                                <li><a href="#">Çıxış</a></li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                    <div class="dropdown-box">
-
-                        <div class="dropdown">
-
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <img src="~/Content/images/option-icon.png" alt="img"> </button>
-
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-
-                                <li> <a href="#" class="login-round"><i class="fa fa-sign-in"></i></a> <a href="#" class="btn-login">Log in with Jobinn</a> </li>
-
-                                <li> <a href="#" class="login-round"><i class="fa fa-user-plus"></i></a> <a href="#" class="btn-login">Log in with Jobinn</a> </li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </div>
+                @Html.Partial("_HomePartial")
+              
 
                 <!--USER OPTION COLUMN END-->
 
@@ -376,10 +335,11 @@
             @RenderBody()
 
 
-
-            <!--CALL TO ACTION SECTION START-->
-
-            <section class="call-action-section">
+            @if (!Request.IsAuthenticated)
+            {
+                 <!--CALL TO ACTION SECTION START-->
+                
+                    <section class="call-action-section">
 
                 <div class="container">
 
@@ -392,13 +352,17 @@
                         </p>
 
                     </div>
-
-                    <a href="#" class="btn-get">Qeydiyyatdan keçin &amp; İndi cəhd edin</a>
+                    @Html.ActionLink("Qeydiyyatdan keçin & İndi cəhd edin", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn-get" })
+                   
                 </div>
 
-            </section>
+                 </section>
 
-            <!--CALL TO ACTION SECTION END--> 
+                 <!--CALL TO ACTION SECTION END--> 
+             }
+
+
+
 
             <!--FOOTER START-->
 
@@ -442,7 +406,7 @@
         <!--All js files-->
         @Scripts.Render("~/Content/jquery")
         @Scripts.Render("~/Content/bootstrap")
-      
+   
     </body>
 
     </html>

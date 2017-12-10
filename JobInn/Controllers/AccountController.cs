@@ -66,13 +66,13 @@ namespace JobInn.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl,ApplicationUser user)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-
+            Session["id"] = user.Id;
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -149,9 +149,17 @@ namespace JobInn.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { Email = model.Email,
+                                                UserName = model.Email,
+                                                 first_name=model.first_name,
+                                                 last_name=model.last_name,
+                                                 PhoneNumber=model.PhoneNumber,
+                                                // profil_img=model.profil_img
+
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -167,7 +175,7 @@ namespace JobInn.Controllers
                 }
                 AddErrors(result);
             }
-
+          
             // If we got this far, something failed, redisplay form
             return View(model);
         }

@@ -53,7 +53,7 @@ namespace JobInn.Models
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        //[Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -64,6 +64,19 @@ namespace JobInn.Models
 
     public class RegisterViewModel
     {
+        //[Required]
+       // public string UseName { get; set; }
+        
+       // public string profil_img { get; set; }
+
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        public string first_name { get; set; }
+
+        [Required]
+        public string last_name { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

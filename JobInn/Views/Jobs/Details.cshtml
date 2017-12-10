@@ -1,0 +1,107 @@
+﻿@model JobInn.Models.TablePage.Employers.Job
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Job</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.city.city_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city.city_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.company.company_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.company.company_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobcategory.jobcategory_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobcategory.jobcategory_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobtype.jobtype_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobtype.jobtype_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user.first_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.first_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.concerperson_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.concerperson_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.job_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.job_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.salary_package)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.salary_package)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clossing_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clossing_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.job_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

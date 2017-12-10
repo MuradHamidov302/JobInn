@@ -1,41 +1,124 @@
 ﻿@model JobInn.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
-}
 
-<h2>@ViewBag.Title.</h2>
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
 }
+<!--INNER BANNER START-->
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<section id="inner-banner">
+
+    <div class="container">
+
+        <h1>Register Your Account</h1>
+
+    </div>
+
+</section>
+
+<!--INNER BANNER END-->
+
+<div id="main">
+
+
+
+    <!--SIGNUP SECTION START-->
+
+    <section class="signup-section">
+
+        <div class="container">
+
+            <div class="holder">
+
+                <div class="thumb"><img src="~/Content/images/signup.png" alt="img"></div>
+
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                   
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    <div class="input-box">
+                        <i class="fa fa-pencil"></i>
+                        @Html.TextBoxFor(m => m.first_name, new { @class = "form-control", @placeholder = "First Name" })
+                      
+
+                    </div>
+
+                    <div class="input-box">
+                        <i class="fa fa-pencil-square-o"></i>
+                        @Html.TextBoxFor(m => m.last_name, new { @class = "form-control", @placeholder = "Last Name" })
+
+                    </div>
+                    
+                    @*<div class="input-box">
+                        <i class="fa fa-user"></i>
+                        @Html.TextBoxFor(m => m.UseName, new { @class = "form-control", @placeholder = "Username" })
+                    </div>*@
+
+
+                    <div class="input-box">
+                        <i class="fa fa-phone"></i>
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = "Phone" })
+                        
+
+                    </div>
+
+                    @*<div class="upload-box">
+
+                        <div class="hold">
+                            <a href="#">Maximum file size 20 MB</a> <span class="btn-file">
+                               Profil Image
+                                @Html.TextBoxFor(m => m.profil_img, new { @class = "form-control" , @type = "file" })
+                              
+                            </span>
+                        </div>
+
+                    </div>*@
+
+
+                    <div class="input-box">
+                        <i class="fa fa-envelope-o"></i>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+
+                    </div>
+
+                    <div class="input-box">
+                        <i class="fa fa-unlock"></i>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+
+                    </div>
+
+                    <div class="input-box">
+                        <i class="fa fa-unlock"></i>
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+
+                    </div>
+
+                    @*<div class="check-box">
+
+                        <input id="id3" type="checkbox" />
+
+                        <strong>I’ve read <a href="#">Terms</a> &amp; <a href="#">Conditions</a></strong>
+                    </div>*@
+
+                    <input type="submit" value="Sign up">
+
+                    <em>Already a Member? @Html.ActionLink("SIGN UP NOW", "Login")</em>
+
+                    
+                }
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--SIGNUP SECTION END-->
+
+
+
+</div>
+
+<!--MAIN END--> 

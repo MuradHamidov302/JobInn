@@ -1,0 +1,282 @@
+﻿@model JobInn.Models.TablePage.HomeViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
+}
+
+<!--BANNER START-->
+
+<div class="banner-outer">
+
+    <div id="banner" class="element"> <img src="~/Content/images/banner22.png" alt="banner"> </div>
+
+    <div class="caption">
+
+        <div class="holder">
+
+            <h1>Online İş axtarın və ya iş elanı verin!</h1>
+
+            <form action="#">
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-md-4 col-sm-4">
+
+                            <input type="text" placeholder="İş başlığı, bacarıq, şirkət adı daxil edin">
+
+                        </div>
+
+                        <div class="col-md-4 col-sm-4">
+
+                            <input type="text" placeholder="Şəhər seçin">
+
+                        </div>
+
+                        <div class="col-md-3 col-sm-3">
+
+                            <input type="text" placeholder="Kategoriya">
+
+                        </div>
+
+                        <div class="col-md-1 col-sm-1">
+
+                            <button type="submit"><i class="fa fa-search"></i></button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+            <div class="banner-menu">
+
+                <ul>
+                    @foreach (var item in Model.city.OrderByDescending(item => item.job.Count).Take(7))
+                    {
+                        <li><a href="#">@item.city_name</a></li>
+                    }
+
+
+                </ul>
+
+            </div>
+
+            <div class="btn-row">
+                <a href="job-seekers.html"><i class="fa fa-user"></i>Mən iş axtarıram</a>
+                <a href="employers.html"><i class="fa fa-building-o"></i>Mən iş elanı verirəm</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="browse-job-section">
+
+        <div class="container">
+
+            <div class="holder">
+                <a href="jobs.html" class="btn-brows">İş axtar</a>
+                <strong class="title">San Francisco, Palo Alto, Mountain View, Sacramento, Nyu-York, Böyük Britaniya, Asiya Pasifiklərində İş tapın</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--BANNER END-->
+<!--MAIN START-->
+
+<div id="main">
+
+    <!--POPULAR JOB CATEGORIES START-->
+
+    <section class="popular-categories">
+
+        <div class="container">
+
+            <div class="clearfix">
+
+                <h2>Popular Jobs Categories</h2>
+
+                <a href="#" class="btn-style-1">Explore All Jobs</a>
+            </div>
+
+            <div class="row">
+                @foreach (var item in Model.jobcategory)
+                {
+                    <div class="col-md-3 col-sm-6">
+
+                        <div class="box">
+                            <img src="~/Content/images/categories-icon-1.png" alt="img">
+
+                            <h4><a href="#">@item.jobcategory_name</a></h4>
+
+                            <strong>@item.job.Count iş mövcuddur</strong>
+
+                            <p>Available in @item.jobcategory_name</p>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--POPULAR JOB CATEGORIES END-->
+    <!--RECENT JOB SECTION START-->
+
+    <section class="recent-row padd-tb">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-9 col-sm-8">
+
+                    <div id="content-area">
+
+                        <h2>Recent Hot Jobs</h2>
+
+                        <ul id="myList">
+                            @foreach (var item in Model.job)
+                            {
+                                <li>
+
+                                    <div class="box">
+
+                                        <div class="thumb"><a href="#"><img src="~/Content/images/recent-job-thumb-1.jpg" alt="img"></a></div>
+
+                                        <div class="text-col">
+
+                                            <h4><a href="#">@item.job_title</a></h4>
+                                            @if (item.company_id != null)
+                                            {
+                                                <p>@item.company.company_name</p>
+                                            }
+                                            else
+                                            {
+                                                <p>@item.concerperson_name</p>
+                                            }
+
+                                            <a href="#" class="text"><i class="fa fa-map-marker"></i>@item.location</a> <a href="#" class="text"><i class="fa fa-calendar"></i>@item.clossing_date </a>
+                                        </div>
+
+                                        <strong class="price"><i class="fa fa-money"></i>@item.salary_package</strong> <a href="#" class="btn-1 @item.jobtype.jobtypecolor.color_class ripple">@item.jobtype.jobtype_name</a>
+                                    </div>
+
+                                </li>
+                            }
+
+
+                        </ul>
+
+                        <div id="loadMore"> <a href="#" class="load-more"><i class="fa fa-user"></i>Load More Jobs</a></div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3 col-sm-4">
+
+                    <h2>Featured Jobs</h2>
+
+                    <aside>
+
+                        <div class="sidebar">
+                            @foreach (var item in Model.job.OrderByDescending(item => item.clossing_date).Take(3))
+                            {
+                                <div class="box">
+
+                                    <div class="thumb">
+                                        <a href="#"><img src="~/Content/images/features-img-1.jpg" alt="img"></a>
+
+                                        <div class="caption"><img src="~/Content/images/envato-text.png" alt="envato"></div>
+
+                                    </div>
+
+                                    <div class="text-box">
+                                        <a href="#" class="btn-time @item.jobtype.jobtypecolor.color_class">@item.jobtype.jobtype_name</a>
+
+                                        <h4><a href="#">@item.job_title</a></h4>
+
+                                        <a href="#" class="text"><i class="fa fa-map-marker"></i>@item.location</a> <a href="#" class="text"><i class="fa fa-calendar"></i>@item.clossing_date</a>
+                                        <strong class="price"><i class="fa fa-money"></i>@item.salary_package</strong> <a href="#" class="btn-apply">Apply for this Job</a>
+                                    </div>
+
+                                </div>
+                            }
+
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--RECENT JOB SECTION END-->
+    <!--POST AREA START-->
+
+    <section class="post-section padd-tb">
+
+        <div class="container">
+
+            <div class="row">
+                @foreach (var item in Model.blog.OrderByDescending(item => item.blog_datetime).Take(3))
+                {
+                    <div class="col-md-4 col-sm-4">
+
+                        <div class="post-box">
+
+                            <div class="frame"><a href="#"><img src="~/Content/images/blog/post-img-1.jpg" alt="img"></a></div>
+
+                            <div class="text-box">
+                                <strong class="date"><i class="fa fa-calendar"></i>@item.blog_datetime.ToString("mm/dd/yyyy")</strong>
+
+                                <h4>
+                                    <a href="#">
+                                        @item.blog_title
+                                    </a>
+                                </h4>
+
+                                <p>@item.blog_alerttext</p>
+
+                                <div class="thumb"><a href="#"><img src="~/Content/images/admin-img.jpg" alt="img"></a></div>
+
+                                <strong class="name"><span>By</span> @item.company.company_name</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--POST AREA END-->
+
+</div>
+
+<!--MAIN END-->
+
+

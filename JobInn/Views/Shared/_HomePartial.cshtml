@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNet.Identity
+<!--USER OPTION COLUMN START-->
+
+<div class="user-option-col">
+    @if (Request.IsAuthenticated)
+            {
+        <div class="thumb">
+
+            <div class="dropdown">
+
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <img src="~/Content/images/user-img.png" alt="img"></button>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                    <li>@Html.ActionLink("det","ProfilDetail","Profile")</li>
+
+                    <li><a href="#">Şifrəni Dəyiş</a></li>
+
+                    <li><a href="#">Profili Dəyiş</a></li>
+                    <li>
+                   
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                         {
+                            @Html.AntiForgeryToken()
+
+                              <a href="javascript:document.getElementById('logoutForm').submit()">Çıxış</a>
+                         }
+                    </li>
+                    
+                </ul>
+
+            </div>
+
+        </div>
+
+    }
+    else
+    {
+        <div class="dropdown-box">
+
+            <div class="dropdown">
+
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <img src="~/Content/images/option-icon.png" alt="img"> </button>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+                    <li>
+                        <a href="javascript:void(0)" class="login-round"><i class="fa fa-sign-in"></i></a>
+                        @Html.ActionLink("Profilə daxil ol", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn-login" })
+                
+                    </li>
+
+                    <li> 
+                    <a href="javascript:void(0)" class="login-round"><i class="fa fa-user-plus"></i></a>
+                        @Html.ActionLink("Qeydiyyatdan keç", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn-login" })
+                    </li>
+                 
+                </ul>
+
+            </div>
+
+        </div>
+    }
+</div>
+
+<!--USER OPTION COLUMN END-->

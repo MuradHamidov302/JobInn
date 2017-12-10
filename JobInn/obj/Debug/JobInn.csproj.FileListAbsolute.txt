@@ -68,4 +68,7 @@ C:\Users\TexnoUsta\Desktop\JobInn\JobInn\bin\Microsoft.AI.Web.xml
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.csproj.CoreCompileInputs.cache
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.dll
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.pdb
+C:\Users\TexnoUsta\Desktop\JobInn\JobInn\bin\WebActivator.dll
+C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.createdatabase.resources
+C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.csproj.GenerateResource.Cache
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.csprojResolveAssemblyReference.cache

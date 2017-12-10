@@ -7,23 +7,90 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using JobInn.Models;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace JobInn.Controllers
 {
+    public class RoleViewModel
+    {
+        [Key]
+        public string Id { get; set; }
+        public string Name { get; set; }
+    }
+
     [Authorize]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManger;
 
         public ManageController()
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManger = roleManager;
+        }
+
+        public ActionResult Role()
+        {
+            var roles = RoleManger.Roles.ToList();
+            return View(roles.Select(x => new RoleViewModel() { Id = x.Id, Name = x.Name }));
+        }
+        public ActionResult CreateRole()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateRole(RoleViewModel model)
+        {
+            if (RoleManger.RoleExists(model.Name))
+            {
+                //error
+                return Content("role false");
+            }
+            var newrole = new IdentityRole(model.Name);
+            var result = RoleManger.Create(newrole);
+            if (result.Succeeded) 
+            {
+                return RedirectToAction("Role");
+            }
+            return View(model);
+        }
+
+        public ActionResult AddRoleToUser()
+        {
+            return View();
+        }
+
+        //add role---user
+        [HttpPost]
+        public ActionResult AddRoleToUser(string user, string role)
+        {
+            var _user = UserManager.FindByEmail(user);
+            var _role = RoleManger.FindByName(role);
+
+            var result = UserManager.AddToRole(_user.Id, role);
+            ViewBag.Errors = result.Errors;
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Role");
+            }
+          
+            return View();
+        }
+
+
+        public ApplicationRoleManager RoleManger
+        {
+            get{ return _roleManger ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>(); }
+            set { _roleManger = value; }
         }
 
         public ApplicationSignInManager SignInManager

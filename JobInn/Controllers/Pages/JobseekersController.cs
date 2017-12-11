@@ -12,12 +12,13 @@ using JobInn.Models.TablePage;
 
 namespace JobInn.Controllers.Pages
 {
+    [Authorize]
     public class JobseekersController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
         HomeViewModel vm = new HomeViewModel();
-
+        [AllowAnonymous]
         // GET: Jobseekers
         public ActionResult Index()
         {
@@ -28,7 +29,7 @@ namespace JobInn.Controllers.Pages
             return View(vm);
         }
 
-
+        [AllowAnonymous]
         // GET: Jobseekers/Details/5
         public ActionResult Details(int? id)
         {
@@ -45,7 +46,7 @@ namespace JobInn.Controllers.Pages
         }
 
 
-
+       
         // GET: Jobseekers/Create
         public ActionResult Create()
         {
@@ -55,7 +56,7 @@ namespace JobInn.Controllers.Pages
             ViewBag.user_id = new SelectList(db.Users, "Id", "first_name");
             return View();
         }
-
+       
         // POST: Jobseekers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

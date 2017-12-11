@@ -72,4 +72,5 @@ C:\Users\TexnoUsta\Desktop\JobInn\JobInn\bin\WebActivator.dll
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.createdatabase.resources
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.csproj.GenerateResource.Cache
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.adddatabasejobdescriptionfield.resources
-C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.csprojResolveAssemblyReference.cache
+C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.add_new_field_jobtypecolor_table.resources
+C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.checkdatabase.resources

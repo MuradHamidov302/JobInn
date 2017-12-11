@@ -72,13 +72,18 @@ namespace JobInn.Controllers
             {
                 return View(model);
             }
-            Session["id"] = user.Id;
+         
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
+                    {
+                        ApplicationDbContext db = new ApplicationDbContext();
+                        var Login = db.Users.Where(x => x.Email == user.Email).SingleOrDefault();
+                        Session["UserId"] = Login.Id;
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -90,7 +95,7 @@ namespace JobInn.Controllers
                     return View(model);
             }
         }
-
+        
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]

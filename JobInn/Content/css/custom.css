@@ -1360,6 +1360,19 @@ strong.logo-2 {
 	display: block;
 	clear: both;
 }
+
+/*-------------------------------------------------------*/
+.job-detail .btn-parttime {
+    float: left;
+    padding: 10px 20px;
+    background: #F44336;
+    border-radius: 3px;
+    font: 900 14px/14px 'Roboto', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0 15px 0 0;
+}
+
 .job-detail .btn-freelance {
 	float: left;
 	padding: 10px 20px;
@@ -1370,6 +1383,19 @@ strong.logo-2 {
 	text-transform: uppercase;
 	margin: 0 15px 0 0;
 }
+.job-detail .btn-fulltime {
+	float: left;
+	padding: 10px 20px;
+	background: #1B8AF3;
+	border-radius: 3px;
+	font: 900 14px/14px 'Roboto', sans-serif;
+	color: #fff;
+	text-transform: uppercase;
+	margin: 0 15px 0 0;
+}
+
+
+/*/-------------------------------------------*/
 .job-detail .clearfix {
 	float: left;
 	width: 100%;

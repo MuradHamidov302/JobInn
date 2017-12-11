@@ -17,8 +17,12 @@ namespace JobInn.Models.TablePage.Employers
         public string color_name { get; set; }
         [Column(TypeName = "nvarchar")]
         [StringLength(20)]
-        [Display(Name = "Rıng class adı")]
+        [Display(Name = "Reng class adı")]
         public string color_class { get; set; }
+        [Column(TypeName = "nvarchar")]
+        [StringLength(20)]
+        [Display(Name = "Detail Reng class adı")]
+        public string colorDetail_class { get; set; }
 
 
         public virtual ICollection<JobType> jobtype { get; set; }

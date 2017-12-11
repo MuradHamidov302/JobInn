@@ -62,10 +62,12 @@ namespace JobInn.Controllers.Pages
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "job_id,concerperson_name,email,job_title,location,city_id,jobcategory_id,salary_package,jobtype_id,clossing_date,company_id,user_id,description")] Job job)
+        public ActionResult Create([Bind(Include = "job_id,concerperson_name,email,job_title,location,city_id,jobcategory_id,salary_package,jobtype_id,clossing_date,company_id,description")] Job job)
         {
             if (ModelState.IsValid)
             {
+               
+              job.user_id = Convert.ToString(Session["UserId"]);
                 db.job.Add(job);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -8,7 +8,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>JobInn-Job Directory</title>
+    <title>@ViewBag.Title</title>
 
 
     <!--Style css file all-->
@@ -215,21 +215,15 @@
                                     <li>
                                         <a href="employers.html">İş Axtaranlar</a>
                                     </li>
-                                  
-
-                                    <li>@Html.ActionLink("İş verenler", "Index", "Jobs")  </li>
-                                  
-
+                                 
                                     <li>
-                                        <a href="jobs.html">İş Elanları</a>
-
+                                      
+                                       @Html.ActionLink("İş Elanları", "Index", "Jobs")
                                         <ul>
 
-                                            <li><a href="jobs.html">Latest Jobs</a></li>
+                                            <li>@Html.ActionLink("Butun Is Elanlari", "Index", "Jobs")</li>
 
-                                            <li><a href="jobs-detail.html">Jobs Details</a></li>
-
-                                            <li><a href="job-seekers.html">Jobs Form</a></li>
+                                            <li>@Html.ActionLink("İş Elani Ver", "Create", "Jobs")  </li>
 
                                         </ul>
 

@@ -199,7 +199,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Pages\JobsController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -210,6 +209,14 @@
     <Compile Include="Migrations\201712101627534_add-database-jobdescriptionfield.cs" />
     <Compile Include="Migrations\201712101627534_add-database-jobdescriptionfield.Designer.cs">
       <DependentUpon>201712101627534_add-database-jobdescriptionfield.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712110758514_add_new_field_jobtypecolor_table.cs" />
+    <Compile Include="Migrations\201712110758514_add_new_field_jobtypecolor_table.Designer.cs">
+      <DependentUpon>201712110758514_add_new_field_jobtypecolor_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712111224445_check-database.cs" />
+    <Compile Include="Migrations\201712111224445_check-database.Designer.cs">
+      <DependentUpon>201712111224445_check-database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -488,6 +495,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712101627534_add-database-jobdescriptionfield.resx">
       <DependentUpon>201712101627534_add-database-jobdescriptionfield.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712110758514_add_new_field_jobtypecolor_table.resx">
+      <DependentUpon>201712110758514_add_new_field_jobtypecolor_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712111224445_check-database.resx">
+      <DependentUpon>201712111224445_check-database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

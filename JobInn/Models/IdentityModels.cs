@@ -79,5 +79,6 @@ namespace JobInn.Models
         //go areas admin
         public DbSet<PrivacyPolicy> privacypolicy { get; set; }
 
+      
     }
 }

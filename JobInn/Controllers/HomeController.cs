@@ -23,7 +23,7 @@ namespace JobInn.Controllers
 
             return View(vm);
         }
-        
-        
+
+
     }
 }

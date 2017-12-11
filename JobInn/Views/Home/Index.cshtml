@@ -56,10 +56,9 @@
 
                 <ul>
                     @foreach (var item in Model.city.OrderByDescending(item => item.job.Count).Take(7))
-                    {
+                     {
                         <li><a href="#">@item.city_name</a></li>
-                    }
-
+                     }
 
                 </ul>
 
@@ -148,7 +147,7 @@
                         <h2>Recent Hot Jobs</h2>
 
                         <ul id="myList">
-                            @foreach (var item in Model.job)
+                            @foreach (var item in Model.job.OrderByDescending(item=>item.clossing_date))
                             {
                                 <li>
 
@@ -168,7 +167,10 @@
                                                 <p>@item.concerperson_name</p>
                                             }
 
-                                            <a href="~/Jobs/Details/@item.job_id" class="text"><i class="fa fa-map-marker"></i>@item.location</a> <a href="~/Jobs/Details/@item.job_id" class="text"><i class="fa fa-calendar"></i>@item.clossing_date </a>
+                                            <a href="~/Jobs/Details/@item.job_id" class="text"><i class="fa fa-map-marker">
+                                                  </i>@item.location</a>
+                                            <a href="~/Jobs/Details/@item.job_id" class="text"><i class="fa fa-calendar">
+                                                  </i>@item.clossing_date.Date.ToShortDateString() </a>
                                         </div>
 
                                         <strong class="price"><i class="fa fa-money"></i>@item.salary_package</strong> <a href="~/Jobs/Details/@item.job_id" class="btn-1 @item.jobtype.jobtypecolor.color_class ripple">@item.jobtype.jobtype_name</a>

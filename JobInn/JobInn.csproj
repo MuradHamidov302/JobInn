@@ -199,6 +199,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Pages\JobsController.cs" />
+    <Compile Include="Controllers\Pages\JobseekersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,6 +218,14 @@
     <Compile Include="Migrations\201712111224445_check-database.cs" />
     <Compile Include="Migrations\201712111224445_check-database.Designer.cs">
       <DependentUpon>201712111224445_check-database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712111406227_jobseeker_table_jobtypeid_field.cs" />
+    <Compile Include="Migrations\201712111406227_jobseeker_table_jobtypeid_field.Designer.cs">
+      <DependentUpon>201712111406227_jobseeker_table_jobtypeid_field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712111556043_jobseeker_table_relation_change.cs" />
+    <Compile Include="Migrations\201712111556043_jobseeker_table_relation_change.Designer.cs">
+      <DependentUpon>201712111556043_jobseeker_table_relation_change.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -471,6 +480,11 @@
     <Content Include="Views\Jobs\Details.cshtml" />
     <Content Include="Views\Jobs\Edit.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\Jobseekers\Create.cshtml" />
+    <Content Include="Views\Jobseekers\Delete.cshtml" />
+    <Content Include="Views\Jobseekers\Details.cshtml" />
+    <Content Include="Views\Jobseekers\Edit.cshtml" />
+    <Content Include="Views\Jobseekers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -501,6 +515,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712111224445_check-database.resx">
       <DependentUpon>201712111224445_check-database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712111406227_jobseeker_table_jobtypeid_field.resx">
+      <DependentUpon>201712111406227_jobseeker_table_jobtypeid_field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712111556043_jobseeker_table_relation_change.resx">
+      <DependentUpon>201712111556043_jobseeker_table_relation_change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobInn.Models.TablePage.Jobseekers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,5 +22,6 @@ namespace JobInn.Models.TablePage.Employers
         [ForeignKey("jobcolor_id")]
         public virtual JobTypeColor jobtypecolor { get; set; }
         public virtual ICollection<Job> job { get; set; }
+        public virtual ICollection<Jobseeker> jobseeker { get; set; }
     }
 }

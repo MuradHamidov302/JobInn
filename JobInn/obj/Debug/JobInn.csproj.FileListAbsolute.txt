@@ -74,3 +74,6 @@ C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.csproj.GenerateResourc
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.adddatabasejobdescriptionfield.resources
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.add_new_field_jobtypecolor_table.resources
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.checkdatabase.resources
+C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.jobseeker_table_jobtypeid_field.resources
+C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.jobseeker_table_relation_change.resources
+C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.csprojResolveAssemblyReference.cache

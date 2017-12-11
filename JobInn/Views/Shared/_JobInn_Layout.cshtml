@@ -213,7 +213,14 @@
                                     </li>
 
                                     <li>
-                                        <a href="employers.html">İş Axtaranlar</a>
+                                        @Html.ActionLink("İş Axtaranlar", "Index", "Jobseekers")
+                                        <ul>
+
+                                            <li>@Html.ActionLink("İş Axtaranlar", "Index", "Jobseekers")</li>
+
+                                            <li>@Html.ActionLink("CV yarat", "Create", "Jobseekers")</li>
+
+                                        </ul>
                                     </li>
                                  
                                     <li>

@@ -38,7 +38,7 @@
 
                 <div id="popular-job-slider" class="owl-carousel owl-theme">
 
-                    @foreach (var item in Model.jobcategory)
+                    @foreach (var item in Model.jobcategory.OrderByDescending(item=>item.job.Count).Take(8))
                     {
                         <div class="item">
 

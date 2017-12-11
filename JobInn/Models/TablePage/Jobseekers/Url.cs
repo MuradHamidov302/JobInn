@@ -18,8 +18,10 @@ namespace JobInn.Models.TablePage.Jobseekers
         [Column(TypeName = "nvarchar")]
         [Display(Name = "Əlaqə linki")]
         public string url_link { get; set; }
+        public int jobseeker_id { get; set; }
 
 
-        public virtual ICollection<Jobseeker> jobseeker { get; set; }
+        [ForeignKey("jobseeker_id")]
+        public virtual Jobseeker jobseeker { get; set; }
     }
 }

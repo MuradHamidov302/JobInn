@@ -22,8 +22,6 @@ namespace JobInn.Controllers.Pages
         [AllowAnonymous]
         public ActionResult Index()
         {
-            vm.city = db.city.ToList();
-            vm.blog = db.blog.ToList();
             vm.job = db.job.ToList();
             vm.jobcategory = db.jobcategory.ToList();
             vm.jobtype=db.jobtype.ToList();
@@ -158,3 +156,4 @@ namespace JobInn.Controllers.Pages
         }
     }
 }
+

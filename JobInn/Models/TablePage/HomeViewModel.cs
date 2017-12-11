@@ -1,5 +1,6 @@
 ﻿using JobInn.Models.TablePage.Blogs;
 using JobInn.Models.TablePage.Employers;
+using JobInn.Models.TablePage.Jobseekers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace JobInn.Models.TablePage
         public IEnumerable<Job> job { get; set; }
         public IEnumerable<Blog> blog { get; set; }
         public IEnumerable<JobType> jobtype { get; set; }
+        public IEnumerable<Jobseeker> jobseeker { get; set; }
+        public IEnumerable<Url> url { get; set; }
     }
 }

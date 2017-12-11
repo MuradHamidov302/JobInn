@@ -38,24 +38,32 @@ namespace JobInn.Models.TablePage.Jobseekers
         [Column(TypeName = "ntext")]
         [Display(Name = "Sənəd əlavə edin(Cv-form, Sertifikat vı.s)")]
         public string file { get; set; }
-        [Display(Name = "Əlaqə linki")]
-        public int url_id { get; set; }
-        [Display(Name = "Son Təhsil yeri")]
-        public int education_id { get; set; }
-        [Display(Name = "Son iş yeri")]
-        public int experince_id { get; set; }
+        //[Display(Name = "Əlaqə linki")]
+        //public int url_id { get; set; }
+        //[Display(Name = "Son Təhsil yeri")]
+        //public int education_id { get; set; }
+        //[Display(Name = "Son iş yeri")]
+        //public int experince_id { get; set; }
         public string user_id { get; set; }
+        [Column(TypeName = "nvarchar")]
+        [StringLength(100)]
+        public string location { get; set; }
+        public int jobtype_id { get; set; }
+
+
 
         public virtual ICollection<Skill> skill { get; set; }
 
+        [ForeignKey("jobtype_id")]
+        public virtual JobType jobtype { get; set; }
         [ForeignKey("category_id")]
         public virtual JobCategory jobcategory { get; set; }
-        [ForeignKey("url_id")]
-        public virtual Url url { get; set; }
-        [ForeignKey("education_id")]
-        public virtual Education education { get; set; }
-        [ForeignKey("experince_id")]
-        public virtual Experince experince { get; set; }
+       
+        public virtual ICollection<Url> url { get; set; }
+      
+        public virtual ICollection<Education> education { get; set; }
+       
+        public virtual ICollection<Experince> experince { get; set; }
         [ForeignKey("user_id")]
         public virtual ApplicationUser user { get; set; }
     }

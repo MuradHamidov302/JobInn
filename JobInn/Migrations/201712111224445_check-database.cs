@@ -7,10 +7,12 @@ namespace JobInn.Migrations
     {
         public override void Up()
         {
+            AddColumn("dbo.Jobseekers", "location", c => c.String(maxLength: 100));
         }
         
         public override void Down()
         {
+            DropColumn("dbo.Jobseekers", "location");
         }
     }
 }

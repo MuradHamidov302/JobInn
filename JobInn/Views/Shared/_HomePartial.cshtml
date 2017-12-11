@@ -15,7 +15,8 @@
                   
                @* <li> <a href="~/Profile/UserDetail/@Session["UserId"].ToString()">12345678</a></li>*@
 
-                    <li><a href="#">Şifrəni Dəyiş</a></li>
+                    <li>@*<a href="#">Şifrəni Dəyiş</a>*@
+                    @Html.ActionLink("Şifrəni Dəyiş", "ChangePassword", "Manage")</li>
 
                     <li><a href="#">Profili Dəyiş</a></li>
                     <li>

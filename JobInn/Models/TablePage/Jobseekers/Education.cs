@@ -23,7 +23,10 @@ namespace JobInn.Models.TablePage.Jobseekers
         [Column(TypeName = "ntext")]
         [Display(Name = "Əlavələriniz")]
         public string description { get; set; }
+        public int jobseeker_id { get; set; }
 
-        public virtual ICollection<Jobseeker> jobseeker { get; set; }
+
+        [ForeignKey("jobseeker_id")]
+        public virtual Jobseeker jobseeker { get; set; }
     }
 }

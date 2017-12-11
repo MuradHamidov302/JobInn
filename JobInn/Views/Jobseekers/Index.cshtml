@@ -1,0 +1,274 @@
+﻿@model JobInn.Models.TablePage.HomeViewModel
+
+@{
+    ViewBag.Title = "is axtaranlar";
+    Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
+}
+
+<!--WRAPPER START-->
+
+<div id="wrapper">
+
+
+
+
+    <!--INNER BANNER START-->
+
+    <section id="inner-banner">
+
+        <div class="container">
+
+            <h1>Latest Resumes</h1>
+
+        </div>
+
+    </section>
+
+    <!--INNER BANNER END-->
+    <!--POPULAR JOB CATEGPRIES START-->
+
+    <section class="popular-job-caregries popular-categories candidates-listing">
+
+        <div class="holder">
+
+            <div class="container">
+
+                <h4>Popular Job Categories</h4>
+
+                <div id="popular-job-slider" class="owl-carousel owl-theme">
+
+                    @foreach (var item in Model.jobcategory.OrderByDescending(item => item.job.Count).Take(8))
+                    {
+                        <div class="item">
+
+                            <div class="box">
+                                <img alt="img" src="~/Content/images/categories-icon-1.png">
+
+                                <h4><a href="#">@item.jobcategory_name</a></h4>
+
+                                <strong>@item.job.Count Jobs</strong>
+
+                                <p>Available in @item.jobcategory_name</p>
+
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--POPULAR JOB CATEGPRIES END-->
+    <!--SEARCH BAR SECTION START-->
+
+    <section class="candidates-search-bar">
+
+        <div class="container">
+
+            <form action="#">
+
+                <div class="row">
+
+                    <div class="col-md-4">
+
+                        <input type="text" placeholder="Enter Job Title, Skills or Company">
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <input type="text" placeholder="Enter City, State, Province or Country">
+
+                    </div>
+
+                    <div class="col-md-3">
+
+                        <input type="text" placeholder="Category">
+
+                    </div>
+
+                    <div class="col-md-1">
+
+                        <button type="submit"><i class="fa fa-search"></i></button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!--SEARCH BAR SECTION END-->
+    <!--MAIN START-->
+
+    <div id="main">
+
+        <!--RECENT JOB SECTION START-->
+
+        <section class="resumes-section padd-tb">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-9 col-sm-8">
+
+                        <div class="resumes-content">
+
+                            <div class="check-filter">
+
+                                <form action="#">
+
+                                    <ul>
+
+                                        <li>
+
+                                            <input id="id1" type="checkbox" />
+
+                                            <label>All Jobs</label>
+
+                                        </li>
+                                        @foreach (var item in Model.jobtype)
+                                        {
+                                            <li>
+
+                                                <input id="id2" type="checkbox" />
+
+                                                <label>@item.jobtype_name</label>
+
+                                            </li>
+                                        }
+
+                                    </ul>
+
+                                </form>
+
+                            </div>
+
+                            <h2>Showing All Resumes</h2>
+                            @foreach (var item in Model.jobseeker.OrderByDescending(item => item.jobseekers_id))
+                            {
+                                <div class="box">
+
+                                    <div class="frame"><a href="~/Jobseekers/Details/@item.jobseekers_id"><img src="~/Content/images/resumes/resumes-img-1.jpg" alt="img"></a></div>
+
+                                    <div class="text-box">
+
+                                        <h2><a href="~/Jobseekers/Details/@item.jobseekers_id">@item.full_name</a></h2>
+
+                                        <h4>@item.professional_title</h4>
+
+                                        <div class="clearfix">
+                                            <strong><i class="fa fa-map-marker"></i>@item.location</strong>
+
+                                                @foreach (var item2 in item.url)
+                                                {
+                                                    <a href="@item2.url_link">
+                                                        <strong>
+                                                            <i class="fa fa-globe"></i>
+                                                            @item2.url_name
+                                                        </strong>
+                                                    </a>
+                                                }
+
+                                            
+
+
+                                        </div>
+
+
+
+                                        <span class="price"><i class="fa fa-money"></i>@item.min_rate</span>
+
+                                        <div class="tags">
+                                            <a href="~/Jobseekers/Details/@item.jobseekers_id">
+                                            <i class="fa fa-tags"></i>@item.jobcategory.jobcategory_name,</a>
+                                            @foreach (var item2 in item.skill)
+                                            {
+                                                <a href="~/Jobseekers/Details/@item.jobseekers_id">@item2.skill_name,</a>
+                                            }
+
+                                        </div>
+
+                                        <div class="btn-row">
+                                            <a href="~/Jobseekers/Details/@item.jobseekers_id" class="resume"><i class="fa fa-file-text-o"></i>Resume?</a>
+                                            <a href="~/Jobseekers/Details/@item.jobseekers_id" class="contact">@item.jobtype.jobtype_name</a>
+                                            <a href="~/Jobseekers/Details/@item.jobseekers_id" class="login">Login to Bookmark this Resume?</a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            }
+
+
+
+                            <div id="loadMore"> <a href="#" class="load-more"><i class="fa fa-user"></i>Load More Jobs</a></div>
+
+                        </div>
+                    </div>
+                       
+
+                        <div class="col-md-3 col-sm-4">
+
+                            <h2>Related People</h2>
+
+                            <aside>
+
+                                <div class="sidebar">
+
+                                    <div class="related-people">
+
+                                        <ul>
+
+                                            @foreach (var item in Model.jobseeker.Take(4))
+                                            {
+                                                <li>
+
+                                                    <div class="frame"><a href="~/Jobseekers/Details/@item.jobseekers_id"><img src="~/Content/images/resumes/related-img-1.jpg" alt="img"></a></div>
+
+                                                    <div class="text-box">
+                                                        <strong class="name">
+                                                            <a href="~/Jobseekers/Details/@item.jobseekers_id">@item.full_name</a>
+                                                        </strong>
+                                                        <span><i class="fa fa-tags"></i>@item.jobcategory.jobcategory_name</span>
+                                                        <span><i class="fa fa-map-marker"></i>@item.location</span>
+                                                    </div>
+
+                                                </li>
+                                            }
+
+
+
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </aside>
+
+                        </div>
+
+                   
+
+                </div></div>
+
+        </section>
+
+        <!--RECENT JOB SECTION END-->
+
+    </div>
+
+    <!--MAIN END-->
+
+</div>

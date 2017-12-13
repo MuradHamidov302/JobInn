@@ -77,3 +77,4 @@ C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.checkdataba
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.jobseeker_table_jobtypeid_field.resources
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.jobseeker_table_relation_change.resources
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.csprojResolveAssemblyReference.cache
+C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.Migrations.Datetimenow.resources

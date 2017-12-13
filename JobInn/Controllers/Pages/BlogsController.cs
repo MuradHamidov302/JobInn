@@ -7,122 +7,117 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using JobInn.Models;
-using JobInn.Models.TablePage;
+using JobInn.Models.TablePage.Blogs;
 
 namespace JobInn.Controllers.Pages
 {
     [Authorize]
-    public class CompaniesController : Controller
+    public class BlogsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        HomeViewModel vm = new HomeViewModel();
         [AllowAnonymous]
-        // GET: Companies
+        // GET: Blogs
         public ActionResult Index()
         {
-            vm.job = db.job.ToList();
-            vm.jobcategory = db.jobcategory.ToList();
-            vm.company = db.company.ToList();
-           
-            return View(vm);
+            var blog = db.blog.Include(b => b.company);
+            return View(blog.ToList());
         }
         [AllowAnonymous]
-        // GET: Companies/Details/5
+        // GET: Blogs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.company.Find(id);
-            if (company == null)
+            Blog blog = db.blog.Find(id);
+            if (blog == null)
             {
                 return HttpNotFound();
             }
-            return View(company);
+            return View(blog);
         }
 
-        // GET: Companies/Create
+        // GET: Blogs/Create
         public ActionResult Create()
         {
-            ViewBag.user_id = new SelectList(db.Users, "Id", "first_name");
+            ViewBag.company_id = new SelectList(db.company, "company_id", "company_name");
             return View();
         }
 
-        // POST: Companies/Create
+        // POST: Blogs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "company_id,company_name,tagline,description,video_link,web_site,facebook_link,googleplus_link,twitter_link,linkedin_link,youtube_link,logo_img")] Company company)
+        public ActionResult Create([Bind(Include = "blog_id,blog_title,blog_maintext,blog_alerttext,blog_smallhead,blog_smalltext,blog_img,blog_datetime,company_id")] Blog blog)
         {
             if (ModelState.IsValid)
             {
-                company.user_id = Convert.ToString(Session["UserId"]);
-                db.company.Add(company);
+                db.blog.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.user_id = new SelectList(db.Users, "Id", "first_name", company.user_id);
-            return View(company);
+            ViewBag.company_id = new SelectList(db.company, "company_id", "company_name", blog.company_id);
+            return View(blog);
         }
 
-        // GET: Companies/Edit/5
+        // GET: Blogs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.company.Find(id);
-            if (company == null)
+            Blog blog = db.blog.Find(id);
+            if (blog == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.user_id = new SelectList(db.Users, "Id", "first_name", company.user_id);
-            return View(company);
+            ViewBag.company_id = new SelectList(db.company, "company_id", "company_name", blog.company_id);
+            return View(blog);
         }
 
-        // POST: Companies/Edit/5
+        // POST: Blogs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "company_id,company_name,tagline,description,video_link,web_site,facebook_link,googleplus_link,twitter_link,linkedin_link,youtube_link,logo_img,user_id")] Company company)
+        public ActionResult Edit([Bind(Include = "blog_id,blog_title,blog_maintext,blog_alerttext,blog_smallhead,blog_smalltext,blog_img,blog_datetime,company_id")] Blog blog)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(company).State = EntityState.Modified;
+                db.Entry(blog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.user_id = new SelectList(db.Users, "Id", "first_name", company.user_id);
-            return View(company);
+            ViewBag.company_id = new SelectList(db.company, "company_id", "company_name", blog.company_id);
+            return View(blog);
         }
 
-        // GET: Companies/Delete/5
+        // GET: Blogs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Company company = db.company.Find(id);
-            if (company == null)
+            Blog blog = db.blog.Find(id);
+            if (blog == null)
             {
                 return HttpNotFound();
             }
-            return View(company);
+            return View(blog);
         }
 
-        // POST: Companies/Delete/5
+        // POST: Blogs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Company company = db.company.Find(id);
-            db.company.Remove(company);
+            Blog blog = db.blog.Find(id);
+            db.blog.Remove(blog);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

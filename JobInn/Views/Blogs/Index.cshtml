@@ -1,0 +1,113 @@
+﻿@model IEnumerable<JobInn.Models.TablePage.Blogs.Blog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
+}
+<!--WRAPPER START-->
+
+<div id="wrapper">
+
+
+
+
+    <!--INNER BANNER START-->
+
+    <section id="inner-banner">
+
+        <div class="container">
+
+            <h1>Blogs</h1>
+
+        </div>
+
+    </section>
+
+    <!--INNER BANNER END-->
+    <!--MAIN START-->
+
+    <div id="main">
+
+
+
+        <!--POST AREA START-->
+
+        <section class="post-section blog-post">
+
+            <div class="container">
+
+                <div class="row">
+                    @foreach (var item in Model.OrderByDescending(item=>item.blog_datetime))
+                    {
+                        <div class="col-md-4 col-sm-6">
+
+                            <div class="post-box">
+
+                                <div class="frame"><a href="~/Blogs/Details/@item.blog_id">
+                                    <img src="~/Content/images/blog/post-img-1.jpg" alt="img"></a></div>
+
+                                <div class="text-box">
+                                    <strong class="date"><i class="fa fa-calendar"></i>@item.blog_datetime</strong>
+
+                                    <h4>
+                                        <a href="~/Blogs/Details/@item.blog_id">
+                                           @item.blog_title
+                                        </a>
+                                    </h4>
+
+                                    <p> @item.blog_alerttext</p>
+
+                                    <div class="thumb"><a href="~/Companies/Details/@item.company_id"><img src="~/Content/images/admin-img.jpg" alt="img"></a></div>
+
+                                    <strong class="name"><span>By</span> @item.company.company_name</strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+
+
+                </div>
+
+                <!--PAGINATION SECTION START-->
+
+                <div class="pagination-box">
+
+                    <nav>
+
+                        <ul class="pager">
+
+                            <li><a href="#" class="prv">Previous</a></li>
+
+                            <li><a href="#">1</a></li>
+
+                            <li class="active"><a href="#">2</a></li>
+
+                            <li><a href="#">3</a></li>
+
+                            <li><a href="#">4</a></li>
+
+                            <li><a href="#" class="next">Next</a></li>
+
+                        </ul>
+
+                    </nav>
+
+                </div>
+
+                <!--PAGINATION SECTION END-->
+
+
+
+            </div>
+
+        </section>
+
+        <!--POST AREA END-->
+
+    </div>
+
+    <!--MAIN END-->
+
+</div>

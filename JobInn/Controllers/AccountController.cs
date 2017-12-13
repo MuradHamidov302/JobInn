@@ -83,6 +83,7 @@ namespace JobInn.Controllers
                         ApplicationDbContext db = new ApplicationDbContext();
                         var Login = db.Users.Where(x => x.Email == user.Email).SingleOrDefault();
                         Session["UserId"] = Login.Id;
+                        Session["Img"] = Login.profil_img;
                     }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:

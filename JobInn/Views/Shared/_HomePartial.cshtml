@@ -9,15 +9,16 @@
             <div class="dropdown">
 
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <img src="~/Content/images/user-img.png" alt="img">
+                <img style="width:50px;height:50px;border-radius:100%;" title="@User.Identity.GetUserName()" src="~/Content/images/24.jpg" alt="img">
+                    
                     @if (Session["UserId"] != null)
                     {<div style="width:10px;
                                  height:10px; 
                                  background-color:greenyellow;
                                  border-radius:100%;
-                                 border:solid 0.4px black;
+                                 border:solid 0.5px gray;
                                  position:relative;
-                                 bottom:13px;left:5px;"></div>
+                                 bottom:13px;left:3px;"></div>
                     }
                    
                 </button>

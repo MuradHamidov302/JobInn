@@ -200,8 +200,10 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Pages\BlogsController.cs" />
     <Compile Include="Controllers\Pages\CompaniesController.cs" />
+    <Compile Include="Controllers\Pages\ContactsController.cs" />
     <Compile Include="Controllers\Pages\JobsController.cs" />
     <Compile Include="Controllers\Pages\JobseekersController.cs" />
+    <Compile Include="Controllers\Pages\PrivacyPoliciesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -502,6 +504,16 @@
     <Content Include="Views\Blogs\Details.cshtml" />
     <Content Include="Views\Blogs\Edit.cshtml" />
     <Content Include="Views\Blogs\Index.cshtml" />
+    <Content Include="Views\PrivacyPolicies\Create.cshtml" />
+    <Content Include="Views\PrivacyPolicies\Delete.cshtml" />
+    <Content Include="Views\PrivacyPolicies\Details.cshtml" />
+    <Content Include="Views\PrivacyPolicies\Edit.cshtml" />
+    <Content Include="Views\PrivacyPolicies\Index.cshtml" />
+    <Content Include="Views\Contacts\Create.cshtml" />
+    <Content Include="Views\Contacts\Delete.cshtml" />
+    <Content Include="Views\Contacts\Details.cshtml" />
+    <Content Include="Views\Contacts\Edit.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

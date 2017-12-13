@@ -1,0 +1,67 @@
+﻿@model IEnumerable<JobInn.Areas.Admin.Models.PrivacyPolicy>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
+}
+
+<!--WRAPPER START-->
+
+<div id="wrapper">
+
+
+
+
+    <!--INNER BANNER START-->
+
+    <section id="inner-banner">
+
+        <div class="container">
+
+            <h1>Privacy Policy</h1>
+
+        </div>
+
+    </section>
+
+    <!--INNER BANNER END-->
+    <!--MAIN START-->
+
+    <div id="main">
+
+
+
+        <!--POST AREA START-->
+
+        <section class="post-section blog-post privacy-policy">
+
+            <div class="container">
+
+                <div class="post-box">
+
+                    <div class="text-box">
+                        @foreach (var item in Model)
+                        {
+                            <h4>@item.pp_title</h4>
+                            <p> @item.pp_text</p>
+
+                        }
+                       
+
+                    </div>
+
+                </div>
+
+            </div>
+
+       
+        </section>
+
+        <!--POST AREA END-->
+
+    </div>
+
+    <!--MAIN END-->
+
+
+</div>

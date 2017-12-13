@@ -62,22 +62,70 @@ namespace JobInn.Controllers.Pages
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "jobseekers_id,full_name,email,professional_title,category_id,min_rate,your_img,description,file,url_id,education_id,experince_id,location,jobtype_id")] Jobseeker jobseeker)
+        public ActionResult Create(JobseekersViewModel viewModel)
         {
-            if (ModelState.IsValid)
+
+           if (ModelState.IsValid)
             {
-                jobseeker.user_id = Convert.ToString(Session["UserId"]);
-                db.jobseeker.Add(jobseeker);
+
+             var jobseekers1 = new Jobseeker()
+             {
+                full_name = viewModel.full_name,
+                email = viewModel.email,
+                professional_title=viewModel.professional_title,
+                category_id=viewModel.category_id,
+                min_rate=viewModel.min_rate,
+                your_img=viewModel.your_img,
+                description=viewModel.description1,
+                file=viewModel.file,
+                user_id= Convert.ToString(Session["UserId"]),
+                location=viewModel.location,
+                jobtype_id=viewModel.jobtype_id
+             };
+                db.jobseeker.Add(jobseekers1);
+
+             var url1 = new Url()
+             {
+               jobseeker_id=jobseekers1.jobseekers_id,
+               url_link=viewModel.url_link,
+               url_name=viewModel.url_name
+             };
+             var skill1 = new Skill()
+             {
+                jobseeker_id = jobseekers1.jobseekers_id,
+                skill_name = viewModel.skill_name,
+                skill_degree = viewModel.skill_degree
+             };
+             var experiance1 = new Experince()
+             {
+                jobseeker_id = jobseekers1.jobseekers_id,
+                company_name = viewModel.company_name,
+                startend_date = viewModel.startend_date,
+                description=viewModel.description3
+             };
+             var education1 = new Education()
+             {
+                jobseeker_id = jobseekers1.jobseekers_id,
+                school_name = viewModel.school_name,
+                startent_date = viewModel.startent_date,
+                description = viewModel.description2
+             };
+ 
+                db.jobseeker.Add(jobseekers1);
+                db.url.Add(url1);
+                db.education.Add(education1);
+                db.experince.Add(experiance1);
+                db.skill.Add(skill1);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+           }
 
-           
-            ViewBag.category_id = new SelectList(db.jobcategory, "jobcategory_id", "jobcategory_name", jobseeker.category_id);
-            ViewBag.jobtype_id = new SelectList(db.jobtype, "jobtype_id", "jobtype_name", jobseeker.jobtype_id);
+
+            ViewBag.category_id = new SelectList(db.jobcategory, "jobcategory_id", "jobcategory_name", viewModel.category_id);
+            ViewBag.jobtype_id = new SelectList(db.jobtype, "jobtype_id", "jobtype_name", viewModel.jobtype_id);
        
-            ViewBag.user_id = new SelectList(db.Users, "Id", "first_name", jobseeker.user_id);
-            return View(jobseeker);
+           // ViewBag.user_id = new SelectList(db.Users, "Id", "first_name", viewModel.user_id);
+            return View(viewModel);
         }
 
         //// GET: Jobseekers/Edit/5

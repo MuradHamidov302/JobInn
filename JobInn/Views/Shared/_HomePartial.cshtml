@@ -2,20 +2,32 @@
 <!--USER OPTION COLUMN START-->
 
 <div class="user-option-col">
-    @if (Request.IsAuthenticated)
+    @if (Request.IsAuthenticated )
             {
         <div class="thumb">
 
             <div class="dropdown">
 
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> <img src="~/Content/images/user-img.png" alt="img"></button>
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <img src="~/Content/images/user-img.png" alt="img">
+                    @if (Session["UserId"] != null)
+                    {<div style="width:10px;
+                                 height:10px; 
+                                 background-color:greenyellow;
+                                 border-radius:100%;
+                                 border:solid 0.4px black;
+                                 position:relative;
+                                 bottom:13px;left:5px;"></div>
+                    }
+                   
+                </button>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
                   
                @* <li> <a href="~/Profile/UserDetail/@Session["UserId"].ToString()">12345678</a></li>*@
 
-                    <li>@*<a href="#">Şifrəni Dəyiş</a>*@
+                    <li>
                     @Html.ActionLink("Şifrəni Dəyiş", "ChangePassword", "Manage")</li>
 
                     <li><a href="#">Profili Dəyiş</a></li>

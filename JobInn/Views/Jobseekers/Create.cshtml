@@ -1,4 +1,4 @@
-﻿@model JobInn.Models.TablePage.Jobseekers.Jobseeker
+﻿@model JobInn.Models.TablePage.JobseekersViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -226,8 +226,11 @@
                         <div class="col-md-12">
                             <label>Description</label>
                             <div class="text-editor-box">
-                                @Html.TextAreaFor(model => model.description, new { @class = "txtEditor form-control" })
-                             
+                               
+                                
+                                @Html.EditorFor(model => model.description1, new { @class = "txtEditor form-control" })
+
+
 
                             </div>
 
@@ -236,9 +239,14 @@
                         <div class="col-md-6 col-sm-6">
 
                             <label>Add Your Skills</label>
+                            <div class="col-md-9">@Html.EditorFor(model => model.skill_name, new { htmlAttributes = new { @class = "form-control" } })</div>
+                            <div class="col-md-3">@Html.EditorFor(model => model.skill_degree, new { htmlAttributes = new { @class = "form-control" , @placeholder = "0-100" } })</div>
+                           
+                            <div class="col-md-9">@Html.EditorFor(model => model.skill_name, new { htmlAttributes = new { @class = "form-control" } })</div>
+                            <div class="col-md-3">@Html.EditorFor(model => model.skill_degree, new { htmlAttributes = new { @class = "form-control", @placeholder = "0-100" } , @min = "0",@max = "100",@type="number" })</div>
 
-                            <input type="text" placeholder="Comma separate a list of relevant skills">
-
+                            <div class="col-md-9">@Html.EditorFor(model => model.skill_name, new { htmlAttributes = new { @class = "form-control" } })</div>
+                            <div class="col-md-3">@Html.EditorFor(model => model.skill_degree, new { htmlAttributes = new { @class = "form-control", @placeholder = "0-100" } })</div>
                         </div>
 
                         <div class="col-md-6 col-sm-6">
@@ -279,16 +287,16 @@
                                                 <li>
 
                                                     <label>Name</label>
-
-                                                    <input type="text" placeholder="Name">
+                                                    @Html.EditorFor(model => model.url_name, new { htmlAttributes = new { @class = "form-control"} })
+                                                   
 
                                                 </li>
 
                                                 <li>
 
                                                     <label>URL</label>
-
-                                                    <input type="text" placeholder="URL">
+                                                    @Html.EditorFor(model => model.url_link, new { htmlAttributes = new { @class = "form-control" } })
+                                                   
 
                                                 </li>
 
@@ -299,7 +307,7 @@
                                     </div>
 
                                 </div>
-                                @*Ajaxs*@
+                             
 
                             </div>
 
@@ -320,32 +328,24 @@
                                                 <li>
 
                                                     <label>School Name</label>
-
-                                                    <input type="text" placeholder="School Name">
-
-                                                </li>
-
-                                                <li>
-
-                                                    <label>Qualification(s)</label>
-
-                                                    <input type="text" placeholder="Certificates / Degree">
+                                                    @Html.EditorFor(model => model.school_name, new { htmlAttributes = new { @class = "form-control" } })
+                                                    
 
                                                 </li>
 
                                                 <li>
 
                                                     <label>Start / End Date</label>
-
-                                                    <input type="text" placeholder="Start Date and End Date">
+                                                    @Html.EditorFor(model => model.startent_date, new { htmlAttributes = new { @class = "form-control" } })
+                                                 
 
                                                 </li>
 
                                                 <li>
 
                                                     <label>Description (optional)</label>
-
-                                                    <textarea cols="10" rows="10" placeholder="Description"></textarea>
+                                                    @Html.TextAreaFor(model => model.description2, new { htmlAttributes = new { @class = "form-control" } })
+                                                   
 
                                                 </li>
 
@@ -356,7 +356,7 @@
                                     </div>
 
                                 </div>
-                                @*Ajaxs*@
+                              
                             </div>
 
                             <div class="col-md-4 col-sm-4">
@@ -376,32 +376,25 @@
                                                 <li>
 
                                                     <label>Employer</label>
-
-                                                    <input type="text" placeholder="Company Name">
-
-                                                </li>
-
-                                                <li>
-
-                                                    <label>Job Title</label>
-
-                                                    <input type="text" placeholder="Your Designation">
+                                                    @Html.EditorFor(model => model.company_name, new { htmlAttributes = new { @class = "form-control" } })
+                            
 
                                                 </li>
+
 
                                                 <li>
 
                                                     <label>Start / End Date</label>
-
-                                                    <input type="text" placeholder="Start Date and End Date">
+                                                    @Html.EditorFor(model => model.startend_date, new { htmlAttributes = new { @class = "form-control" } })
+                                                   
 
                                                 </li>
 
                                                 <li>
 
                                                     <label>Description (optional)</label>
-
-                                                    <textarea cols="10" rows="10" placeholder="Description"></textarea>
+                                                    @Html.TextAreaFor(model => model.description3, new { htmlAttributes = new { @class = "form-control" } })
+                                                    
 
                                                 </li>
 
@@ -412,7 +405,7 @@
                                     </div>
 
                                 </div>
-                                @*Ajaxs*@
+                            
                             </div>
 
                         </div>
@@ -428,58 +421,6 @@
                         </div>
 
                     </div>
-
-
-
-
-
-
-
-
-                    @*
-
-
-
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.url_id, "url_id", htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownList("url_id", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.url_id, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.education_id, "education_id", htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownList("education_id", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.education_id, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.experince_id, "experince_id", htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownList("experince_id", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.experince_id, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.jobtype_id, "jobtype_id", htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                              
-                                @Html.ValidationMessageFor(model => model.jobtype_id, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Create" class="btn btn-default" />
-                            </div>
-                        </div>
-                    </div>*@
                 }
 
         </div>

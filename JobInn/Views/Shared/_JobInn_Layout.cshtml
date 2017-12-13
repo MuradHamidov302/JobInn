@@ -213,7 +213,7 @@
                                     </li>
 
                                     <li>
-                                        @Html.ActionLink("İş Axtaranlar", "Index", "Jobseekers")
+                                        <a href="javascript:void(0)">İş Axtaranlar</a>
                                         <ul>
 
                                             <li>@Html.ActionLink("İş Axtaranlar", "Index", "Jobseekers")</li>
@@ -225,7 +225,7 @@
                                  
                                     <li>
                                       
-                                       @Html.ActionLink("İş Elanları", "Index", "Jobs")
+                                      <a href="#">Is Elanlari</a>
                                         <ul>
 
                                             <li>@Html.ActionLink("Butun Is Elanlari", "Index", "Jobs")</li>
@@ -241,9 +241,10 @@
 
                                         <ul>
 
-                                            <li><a href="companies.html">Companies</a></li>
+                                            <li>@Html.ActionLink("Şirkətlər", "Index","Companies")</li>
+                                          
 
-                                            <li><a href="company-detail.html">Company Details</a></li>
+                                            <li>@Html.ActionLink("Şirkətini yarat", "Create", "Companies")</li>
 
                                         </ul>
 
@@ -271,21 +272,7 @@
 
                                             </li>
 
-                                            <li><a href="companies.html">Companies</a></li>
-
-                                            <li><a href="#">Resumes</a></li>
-
-
-                                            <li><a href="testimonials.html">Testimonials</a></li>
-
-                                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-
-                                            <li><a href="our-terms.html">Our Terms</a></li>
-
-                                            <li><a href="login.html">Login</a></li>
-
-                                            <li><a href="signup.html">Register</a></li>
-
+                                          
                                             <li><a href="privacy-policy.html">Privacy Policy</a></li>
 
                                         </ul>

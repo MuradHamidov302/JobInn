@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Pages\CompaniesController.cs" />
     <Compile Include="Controllers\Pages\JobsController.cs" />
     <Compile Include="Controllers\Pages\JobseekersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -242,6 +243,7 @@
     <Compile Include="Models\TablePage\Employers\JobType.cs" />
     <Compile Include="Models\TablePage\Employers\JobTypeColor.cs" />
     <Compile Include="Models\TablePage\HomeViewModel.cs" />
+    <Compile Include="Models\TablePage\JobseekersViewModel.cs" />
     <Compile Include="Models\TablePage\Jobseekers\Education.cs" />
     <Compile Include="Models\TablePage\Jobseekers\Experince.cs" />
     <Compile Include="Models\TablePage\Jobseekers\Jobseeker.cs" />
@@ -485,6 +487,11 @@
     <Content Include="Views\Jobseekers\Details.cshtml" />
     <Content Include="Views\Jobseekers\Edit.cshtml" />
     <Content Include="Views\Jobseekers\Index.cshtml" />
+    <Content Include="Views\Companies\Create.cshtml" />
+    <Content Include="Views\Companies\Delete.cshtml" />
+    <Content Include="Views\Companies\Details.cshtml" />
+    <Content Include="Views\Companies\Edit.cshtml" />
+    <Content Include="Views\Companies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

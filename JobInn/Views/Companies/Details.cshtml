@@ -1,0 +1,186 @@
+﻿@model JobInn.Models.TablePage.Company
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
+}
+
+
+<!--WRAPPER START-->
+
+<div id="wrapper">
+    <!--INNER BANNER START-->
+
+    <section id="inner-banner">
+
+        <div class="container">
+
+            <h1>@Model.company_name</h1>
+
+        </div>
+
+    </section>
+
+    <!--INNER BANNER END-->
+    <!--MAIN START-->
+
+    <div id="main">
+
+        <!--RECENT JOB SECTION START-->
+
+        <section class="recent-row padd-tb job-detail">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-9 col-sm-8">
+
+                        <div id="content-area">
+
+                            <div class="box">
+
+                                <div class="thumb">
+                                <a href="#"><img src="~/Content/images/recent-job-detail.jpg" alt="img"></a></div>
+
+                                <div class="text-col">
+
+                                    <h2><a href="#">@Model.company_name</a></h2>
+
+
+
+                                    <ul class="company-small">
+
+                                        <li><strong>Manager:</strong> @Model.user.UserName</li>
+
+
+                                        <li><strong>Location:</strong> New York, NY????? </li>
+
+
+
+                                    </ul>
+
+
+                                    <a href="#" class="text"><em>(View All Jobs)</em></a>
+
+                                    <div class="clearfix">
+                                        <a href="@Model.web_site" class="btn-style-1">Join Us</a>
+
+
+
+                                        <div class="company-social">
+
+                                            <ul>
+
+                                                <li><a href="@Model.googleplus_link"><i class="fa fa-google-plus"></i></a></li>
+
+                                                <li><a href="@Model.twitter_link"><i class="fa fa-twitter"></i></a></li>
+
+                                                <li><a href="@Model.linkedin_link"><i class="fa fa-linkedin"></i></a></li>
+
+                                                <li><a href="@Model.facebook_link"><i class="fa fa-facebook-f"></i></a></li>
+
+                                            </ul>
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                </div>
+
+                                <div class="clearfix">
+
+                                    <h4>@Model.tagline</h4>
+
+                                    @if (Model.video_link!=null)
+                                    {
+                                       <iframe width="560" height="315" src="@Model.video_link" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                                    }
+
+
+                                  
+                                    <h4>Description</h4>
+                                    <p>@Model.description</p>
+                                
+
+                                    <a href="#" class="btn-style-1 style-big">Apply for this Job Now</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-4">
+
+                        <h2>Featured Jobs</h2>
+
+                        <aside>
+
+                            <div class="sidebar">
+
+                                <div class="box">
+
+                                    <div class="thumb">
+                                        <a href="#"><img src="images/features-img-1.jpg" alt="img"></a>
+
+                                        <div class="caption"><img src="images/envato-text.png" alt="envato"></div>
+
+                                    </div>
+
+                                    <div class="text-box">
+                                        <a href="#" class="btn-time">Part Time</a>
+
+                                        <h4><a href="#">UI/UX Visual Designers</a></h4>
+
+                                        <a href="#" class="text"><i class="fa fa-map-marker"></i>Moorgate, London</a>
+                                        <a href="#" class="text"><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </a> 
+                                        <strong class="price"><i class="fa fa-money"></i>$4000 - $5000</strong>
+                                        <a href="#" class="btn-apply">Apply for this Job</a>
+                                    </div>
+
+                                </div>
+
+                                <h2>Jobs Gallery</h2>
+
+                                <div class="sidebar-jobs">
+
+                                    <ul>
+
+                                        <li> <a href="#">General Compliance Officer</a>
+                                        <span><i class="fa fa-map-marker"></i>Arlington, VA </span>
+                                        <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                        <li> <a href="#">Medical Transcrption</a> 
+                                        <span><i class="fa fa-map-marker"></i>San Francisco, CA</span>
+                                        <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                        <li> <a href="#">Support Coordinator</a> 
+                                        <span><i class="fa fa-map-marker"></i>Moorgate, London</span>
+                                        <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!--RECENT JOB SECTION END-->
+
+    </div>
+
+    <!--MAIN END-->
+</div>

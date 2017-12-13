@@ -17,5 +17,6 @@ namespace JobInn.Models.TablePage
         public IEnumerable<JobType> jobtype { get; set; }
         public IEnumerable<Jobseeker> jobseeker { get; set; }
         public IEnumerable<Url> url { get; set; }
+        public IEnumerable<Company> company { get; set; }
     }
 }

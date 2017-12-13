@@ -1,0 +1,222 @@
+﻿@model JobInn.Models.TablePage.HomeViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
+}
+
+
+<!--INNER BANNER START-->
+
+<section id="inner-banner">
+
+    <div class="container">
+
+        <h1>Companies</h1>
+
+    </div>
+
+</section>
+
+<!--INNER BANNER END-->
+<!--POPULAR JOB CATEGPRIES START-->
+
+<section class="popular-job-caregries popular-categories candidates-listing popular-companies">
+
+    <div class="holder">
+
+        <div class="container">
+
+            <h4>Popular Companiess</h4>
+
+            <div id="popular-companies-slider" class="owl-carousel owl-theme">
+                @foreach (var item in Model.company.OrderByDescending(item=>item.job.Count))
+                {
+                    <div class="item">
+
+                        <div class="box"> <img alt="img" src="~/Content/images/companies/companies-img-1.jpg"> </div>
+
+                    </div>
+                }
+                
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--POPULAR JOB CATEGPRIES END-->
+<!--SEARCH BAR SECTION START-->
+
+<section class="candidates-search-bar">
+
+    <div class="container">
+
+        <form action="#">
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <input type="text" placeholder="Enter Job Title, Skills or Company">
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <input type="text" placeholder="Enter City, State, Province or Country">
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <input type="text" placeholder="Category">
+
+                </div>
+
+                <div class="col-md-1">
+
+                    <button type="submit"><i class="fa fa-search"></i></button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!--SEARCH BAR SECTION END-->
+<!--MAIN START-->
+
+<div id="main">
+
+    <!--RECENT JOB SECTION START-->
+
+    <section class="resumes-section padd-tb">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-9 col-sm-8">
+
+                    <div class="resumes-content">
+
+                        <div class="alphabets">
+                          @foreach (var item in Model.company.GroupBy(item => item.company_name.First()))
+                          {
+                              foreach (var item2 in item)
+                              {
+                                <a href="#">@item2.company_name.First()</a>
+                              }
+                          }
+                       
+                        </div>
+
+                        <div class="alphabets-row">
+
+                            <ul id="blog-masonrywrap">
+
+                                @foreach (var item in Model.company.GroupBy(item => item.company_name.First()))
+                                {
+                                    <li class="loop-entry">
+
+                                        <div class="col">
+                                            @foreach (var item2 in item)
+                                            {
+                                                <span>@item2.company_name.First()</span>
+
+                                                <div class="list-col">
+                                                    @foreach (var item3 in item)
+                                                    {
+
+                                                        <a href="~/Companies/Details/@item3.company_id">@item3.company_name (@item3.job.Count)</a>
+                                                    }
+
+                                                </div>
+
+                                            }
+                                        </div>
+
+                                    </li>
+
+                                }
+
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3 col-sm-4">
+
+                    <h2>Featured Jobs</h2>
+
+                    <aside>
+
+                        <div class="sidebar">
+
+                            <div class="box">
+
+                                <div class="thumb">
+                                    <a href="#"><img alt="img" src="images/features-img-1.jpg"></a>
+
+                                    <div class="caption"><img alt="envato" src="images/envato-text.png"></div>
+
+                                </div>
+
+                                <div class="text-box">
+                                    <a class="btn-time" href="#">Part Time</a>
+
+                                    <h4><a href="#">UI/UX Visual Designers</a></h4>
+
+                                    <a class="text" href="#"><i class="fa fa-map-marker"></i>Moorgate, London</a> <a class="text" href="#"><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </a> <strong class="price"><i class="fa fa-money"></i>$4000 - $5000</strong> <a class="btn-apply" href="#">Apply for this Job</a>
+                                </div>
+
+                            </div>
+
+                            <div class="sidebar-jobs">
+
+                                <ul>
+
+                                    <li> <a href="#">General Compliance Officer</a> <span><i class="fa fa-map-marker"></i>Arlington, VA </span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                    <li> <a href="#">Medical Transcrption</a> <span><i class="fa fa-map-marker"></i>San Francisco, CA</span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                    <li> <a href="#">Support Coordinator</a> <span><i class="fa fa-map-marker"></i>Moorgate, London</span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                    <li> <a href="#">Mobile Application Developer</a> <span><i class="fa fa-map-marker"></i>New York, NY</span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                    <li> <a href="#">2D/3D Graphic Designer</a> <span><i class="fa fa-map-marker"></i>Moorgate, London</span> <span><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </span> </li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--RECENT JOB SECTION END-->
+
+</div>
+
+<!--MAIN END-->

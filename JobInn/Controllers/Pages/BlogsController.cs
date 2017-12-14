@@ -8,13 +8,15 @@ using System.Web;
 using System.Web.Mvc;
 using JobInn.Models;
 using JobInn.Models.TablePage.Blogs;
+using System.IO;
 
 namespace JobInn.Controllers.Pages
 {
-    [Authorize]
+    //[Authorize]
     public class BlogsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+       ApplicationDbContext db = new ApplicationDbContext();
+
         [AllowAnonymous]
         // GET: Blogs
         public ActionResult Index()
@@ -50,10 +52,22 @@ namespace JobInn.Controllers.Pages
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "blog_id,blog_title,blog_maintext,blog_alerttext,blog_smallhead,blog_smalltext,blog_img,blog_datetime,company_id")] Blog blog)
+        public ActionResult Create([Bind(Include = "blog_id,blog_title,blog_maintext,blog_alerttext,blog_smallhead,blog_smalltext,blog_datetime,company_id")] Blog blog, HttpPostedFileBase blogimg)
         {
             if (ModelState.IsValid)
             {
+                if (blogimg != null)
+                {
+                    var filename = blogimg.FileName;
+                    string ext = Path.GetExtension(blogimg.FileName);
+
+                    string FileYolu = Guid.NewGuid().ToString() + filename;
+                    var yuklemeYeri = Server.MapPath("/Content/images/blog/") + FileYolu;
+                    blogimg.SaveAs(yuklemeYeri);
+                    blog.blog_img = FileYolu;
+
+                }
+               
                 db.blog.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -129,6 +143,27 @@ namespace JobInn.Controllers.Pages
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult CommentPartial()
+        {
+            return View(db.blogcomment.ToList());
+        }
+        [AllowAnonymous]
+        public JsonResult AddComment(string name,string comment1,int blogid,string Email)
+        {
+          
+            
+                db.blogcomment.Add(new BlogComment
+                {
+                    user_name = name,
+                    email = Email,
+                    comment_text = comment1,
+                    blog_id = blogid
+                });
+                db.SaveChanges();
+            
+            return Json(false,JsonRequestBehavior.DenyGet);
         }
     }
 }

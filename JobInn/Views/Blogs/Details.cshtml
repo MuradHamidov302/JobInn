@@ -3,7 +3,53 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
-}<!--WRAPPER START-->
+}
+@*comment css file*@
+<style>
+    .comment .col-md-12 {
+        padding: 40px 0;
+        border-top: 1px solid #DDDDDD;
+        border-bottom: 1px solid #DDDDDD;
+    }
+
+        .comment .col-md-12 li ul li {
+            margin-left: 115px;
+        }
+
+        .comment .col-md-12 li {
+            list-style: none;
+            padding-top: 15px;
+        }
+
+            .comment .col-md-12 li .block {
+                padding: 6px;
+                margin: 15px 0 0 115px;
+                background: #FFFFFF;
+            }
+
+    .comment .btn-rply {
+        height: 25px;
+        width: 60px;
+        font-size: 12px;
+        background: #1B8AF3;
+        border-radius: 3px;
+        color: white;
+    }
+
+        .comment .btn-rply:hover {
+            background: #FFC107;
+        }
+
+    .comment .col-md-12 li img {
+        width: 85px;
+        height: 85px;
+        float: left;
+    }
+</style>
+@*comment end*@
+
+
+<!--WRAPPER START-->
 
 <div id="wrapper">
 
@@ -39,7 +85,8 @@
                         <div class="post-box">
 
                             <div class="frame">
-                            <a href="#"><img src="~/Content/images/blog/blog-detail-img.jpg" alt="img"></a></div>
+                                <a href="#"><img src="~/Content/images/blog/@Model.blog_img" alt="img"></a>
+                            </div>
 
                             <div class="text-box">
 
@@ -49,7 +96,7 @@
 
                                 <p>@Model.blog_maintext</p>
 
-                             
+
                                 <blockquote>
 
                                     <p>@Model.blog_alerttext</p>
@@ -66,49 +113,82 @@
 
                         </div>
 
+
                         <div class="comment-form">
+                            <div class="addPage">
 
-                            <form action="form.php" method="post">
-
-                                <h2>Leave a Comment</h2>
-
-                                <div class="row">
-
-                                    <div class="col-md-4">
-
-                                        <input name="name" required pattern="[a-zA-Z ]+" type="text" placeholder="Name">
-
-                                    </div>
-
-                                    <div class="col-md-4">
-
-                                        <input name="email" required pattern="^[a-zA-Z0-9-\_.]+[a-zA-Z0-9-\_.]+\.[a-zA-Z0-9.]{2,5}$" type="text" placeholder="Email">
-
-                                    </div>
-
-                                    <div class="col-md-4">
-
-                                        <input name="website" required type="text" placeholder="Website">
-
-                                    </div>
-
+                                <div class="comment">
                                     <div class="col-md-12">
+                                        <h3>Comments</h3>
+                                        <ul>
 
-                                        <textarea name="comments" required cols="10" rows="10" placeholder="Comments"></textarea>
+                                            @foreach (var item in Model.blogcomment)
+            {
+                                                <li>
+                                                    <img class="img-thumbnail" src="~/Content/images/Guest.png" alt="">
+                                                    <div class="block">
+                                                        <h4>@item.user_name   <button class="pull-right btn-rply">Cavabla</button></h4>
 
+                                                        <p>@item.comment_text</p>
+                                                    </div>
+                                                    <ul>
+                                                        @foreach (var item1 in item.commentreply)
+                                                        {
+                                                            <li>
+                                                                <img class="img-thumbnail" src="~/Content/images/Guest.png" alt="">
+                                                                <div class="block">
+                                                                    <h4>@item1.user_name</h4>
+                                                                    <p>@item1.comment_text</p>
+                                                                </div>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
+
+
+                                        </ul>
                                     </div>
-
-                                    <div class="col-md-12">
-
-                                        <input type="submit" value="Submit">
-
-                                    </div>
-
+                                </div>
+                                <button class="Add" data-id="@Model.blogcomment.">sdfgyuiop</button>
                                 </div>
 
-                            </form>
+                                <form role="form">
 
-                        </div>
+                                    <h2>Leave a Comment</h2>
+
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+
+                                            <input name="name" id="name" required pattern="[a-zA-Z ]+" type="text" placeholder="Name">
+
+                                        </div>
+
+                                        <div class="col-md-4">
+
+                                            <input name="email" id="Email" required pattern="^[a-zA-Z0-9-\_.]+\.[a-zA-Z0-9.]{2,5}$" type="text" placeholder="Email">
+
+                                        </div>
+                                        <div class="col-md-12">
+
+                                            <textarea name="comments" id="comment1" required cols="10" rows="10" placeholder="Comments"></textarea>
+
+                                        </div>
+
+                                        <div class="col-md-12">
+
+                                            <input class=" Add" data-id="@Model.blog_id" type="submit" id="send" value="Serh elave et">
+
+                                        </div>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+
 
                     </div>
 
@@ -233,3 +313,41 @@
 
     <!--MAIN END-->
 </div>
+
+
+@section script2{
+
+<script type="text/javascript" >
+    $(document).ready(function () {
+        @*$("#send").click(function () { 
+        var coments = $("#comment1").val();
+        var names = $("#name").val();
+        var emails = $("#Email").val();
+        
+        $.ajax({
+            url: '/Blogs/AddComment/',
+            data: { comment1: coments, blogid:@Model.blog_id, name: names, Email: emails },
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+              
+            }
+        });
+        });*@
+
+        $("button.Add").click(function (e) {
+            //var row = $(this).data("id");
+           // alert(row);
+            $.ajax({
+                type: "GET",
+                url: "/Blogs/CommentPartial",
+               // data: { id: row },
+                success: function () {
+                    $(".addPage").html(data);
+                }, error: function () {
+                    alert(falase);
+                }
+            })
+        })
+    })
+</script>}

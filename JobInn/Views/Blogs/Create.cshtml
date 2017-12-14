@@ -141,7 +141,7 @@
 
             <div class="container">
 
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Create", "Blogs", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -209,14 +209,13 @@
                             <div class="col-md-6 col-sm-12">
 
                                 <label>Blog Image</label>
-
+                             
                                 <div class="upload-box">
 
                                     <div class="hold">
                                         <a href="#">Maximum file size 20 MB</a> <span class="btn-file">
                                             Browse File
-                                            @Html.EditorFor(model => model.blog_img, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
-
+                                          <input name="blogimg"  type="file" />
                                         </span>
                                     </div>
 

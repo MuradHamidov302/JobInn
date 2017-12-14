@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using JobInn.Models;
 using JobInn.Models.TablePage;
+using System.IO;
 
 namespace JobInn.Controllers.Pages
 {
@@ -54,10 +55,22 @@ namespace JobInn.Controllers.Pages
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "company_id,company_name,tagline,description,video_link,web_site,facebook_link,googleplus_link,twitter_link,linkedin_link,youtube_link,logo_img")] Company company)
+        public ActionResult Create([Bind(Include = "company_id,company_name,tagline,description,video_link,web_site,facebook_link,googleplus_link,twitter_link,linkedin_link,youtube_link")] Company company, HttpPostedFileBase compimg)
         {
             if (ModelState.IsValid)
             {
+                if (compimg != null)
+                {
+                    var filename = compimg.FileName;
+                    string ext = Path.GetExtension(compimg.FileName);
+
+                    string FileYolu = Guid.NewGuid().ToString() + filename;
+                    var yuklemeYeri = Server.MapPath("/Content/images/companies/") + FileYolu;
+                    compimg.SaveAs(yuklemeYeri);
+                    company.logo_img = FileYolu;
+
+                }
+
                 company.user_id = Convert.ToString(Session["UserId"]);
                 db.company.Add(company);
                 db.SaveChanges();

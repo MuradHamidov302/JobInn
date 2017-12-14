@@ -140,7 +140,7 @@
 
             <div class="container">
 
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Create", "Jobseekers", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })

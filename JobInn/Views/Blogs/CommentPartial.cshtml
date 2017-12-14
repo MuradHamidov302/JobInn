@@ -1,0 +1,86 @@
+﻿@model IEnumerable<JobInn.Models.TablePage.Blogs.BlogComment>
+
+@{
+    
+    Layout = null;
+}
+
+
+@*comment css file*@
+<style>
+    .comment .col-md-12 {
+        padding: 40px 0;
+        border-top: 1px solid #DDDDDD;
+        border-bottom: 1px solid #DDDDDD;
+    }
+
+        .comment .col-md-12 li ul li {
+            margin-left: 115px;
+        }
+
+        .comment .col-md-12 li {
+            list-style: none;
+            padding-top: 15px;
+        }
+
+            .comment .col-md-12 li .block {
+                padding: 6px;
+                margin: 15px 0 0 115px;
+                background: #FFFFFF;
+            }
+
+    .comment .btn-rply {
+        height: 25px;
+        width: 60px;
+        font-size: 12px;
+        background: #1B8AF3;
+        border-radius: 3px;
+        color: white;
+    }
+
+        .comment .btn-rply:hover {
+            background: #FFC107;
+        }
+
+    .comment .col-md-12 li img {
+        width: 85px;
+        height: 85px;
+        float: left;
+    }
+</style>
+@*comment end*@
+
+
+<div class="comment">
+    <div class="col-md-12">
+        <h3>Comments</h3>
+        <ul>
+
+            @foreach (var item in Model)
+            {
+                <li>
+                    <img class="img-thumbnail" src="~/Content/images/Guest.png" alt="">
+                    <div class="block">
+                        <h4>@item.user_name   <button class="pull-right btn-rply">Cavabla</button></h4>
+
+                        <p>@item.comment_text</p>
+                    </div>
+                    <ul>
+                        @foreach (var item1 in item.commentreply)
+                        {
+                            <li>
+                                <img class="img-thumbnail" src="~/Content/images/Guest.png" alt="">
+                                <div class="block">
+                                    <h4>@item1.user_name</h4>
+                                    <p>@item1.comment_text</p>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+
+        </ul>
+    </div>
+</div>

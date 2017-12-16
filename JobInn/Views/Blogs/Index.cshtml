@@ -44,7 +44,15 @@
                             <div class="post-box">
 
                                 <div class="frame"><a href="~/Blogs/Details/@item.blog_id">
-                                    <img src="~/Content/images/blog/@item.blog_img" alt="img"></a></div>
+
+                                    @if (item.blog_img == null)
+                                    {
+                                      <img style="width:360px;height:200px;" src="~/Content/images/blog.jpg" alt="img">
+                                    }
+                                    else
+                                    {
+                                        <img style="width:360px;height:200px;" src="~/Content/images/blog/@item.blog_img" alt="img">
+                                    }</a></div>
 
                                 <div class="text-box">
                                     <strong class="date"><i class="fa fa-calendar"></i>@item.blog_datetime</strong>
@@ -57,7 +65,19 @@
 
                                     <p> @item.blog_alerttext</p>
 
-                                    <div class="thumb"><a href="~/Companies/Details/@item.company_id"><img src="~/Content/images/admin-img.jpg" alt="img"></a></div>
+                                    <div class="thumb"><a href="~/Companies/Details/@item.company_id">
+                                        @if (item.company.logo_img == null)
+                                        {
+                                            <img src="~/Content/images/comp.jpg" alt="img">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/images/companies/@item.company.logo_img" alt="img">
+                                        }
+
+                                      
+
+                                         </a></div>
 
                                     <strong class="name"><span>By</span> @item.company.company_name</strong>
                                 </div>

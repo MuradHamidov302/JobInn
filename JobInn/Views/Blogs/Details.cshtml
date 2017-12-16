@@ -85,7 +85,18 @@
                         <div class="post-box">
 
                             <div class="frame">
-                                <a href="#"><img src="~/Content/images/blog/@Model.blog_img" alt="img"></a>
+                                <a href="#">
+                                    @if (Model.blog_img==null)
+                                    {
+                                        <img style="width:850px;height:350px;" src="~/Content/images/blog.jpg" alt="img">
+                                    }
+                                    else
+                                    {
+                                        <img style="width:850px;height:350px;"  src="~/Content/images/blog/@Model.blog_img" alt="img">
+                                    }
+
+                                </a>
+
                             </div>
 
                             <div class="text-box">

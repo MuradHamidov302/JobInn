@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using JobInn.Models;
 using JobInn.Models.TablePage.Jobseekers;
 using JobInn.Models.TablePage;
+using System.IO;
 
 namespace JobInn.Controllers.Pages
 {
@@ -62,7 +63,7 @@ namespace JobInn.Controllers.Pages
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(JobseekersViewModel viewModel)
+        public ActionResult Create(JobseekersViewModel viewModel, HttpPostedFileBase profilimg,HttpPostedFileBase resumeimg)
         {
 
            if (ModelState.IsValid)
@@ -75,13 +76,33 @@ namespace JobInn.Controllers.Pages
                 professional_title=viewModel.professional_title,
                 category_id=viewModel.category_id,
                 min_rate=viewModel.min_rate,
-                your_img=viewModel.your_img,
-                description=viewModel.description1,
-                file=viewModel.file,
+                description =viewModel.description1,
                 user_id= Convert.ToString(Session["UserId"]),
                 location=viewModel.location,
                 jobtype_id=viewModel.jobtype_id
-             };
+            };
+                if (profilimg != null)
+                {
+                    var filename = profilimg.FileName;
+                    string ext = Path.GetExtension(profilimg.FileName);
+
+                    string FileYolu = Guid.NewGuid().ToString() + filename;
+                    var yuklemeYeri = Server.MapPath("/Content/images/profile/") + FileYolu;
+                    profilimg.SaveAs(yuklemeYeri);
+                    jobseekers1.your_img = FileYolu;
+
+                }
+                if (resumeimg != null)
+                {
+                    var filename = resumeimg.FileName;
+                    string ext = Path.GetExtension(resumeimg.FileName);
+
+                    string FileYolu = Guid.NewGuid().ToString() + filename;
+                    var yuklemeYeri = Server.MapPath("/Content/images/") + FileYolu;
+                    resumeimg.SaveAs(yuklemeYeri);
+                    jobseekers1.file = FileYolu;
+
+                }
                 db.jobseeker.Add(jobseekers1);
 
              var url1 = new Url()
@@ -111,7 +132,6 @@ namespace JobInn.Controllers.Pages
                 description = viewModel.description2
              };
  
-                db.jobseeker.Add(jobseekers1);
                 db.url.Add(url1);
                 db.education.Add(education1);
                 db.experince.Add(experiance1);

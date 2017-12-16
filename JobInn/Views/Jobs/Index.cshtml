@@ -166,7 +166,19 @@
 
                                         <div class="box">
 
-                                            <div class="thumb"><a href="~/Jobs/Details/@item.job_id"><img src="~/Content/images/recent-job-thumb-1.jpg" alt="img"></a></div>
+                                            <div class="thumb"><a href="~/Jobs/Details/@item.job_id">
+                                                 @if (item.company_id == null || item.company.logo_img == null)
+                                                 {
+                                                    <img style="width:60px; height:60px;" src="~/Content/images/Guest.png" alt="img">
+                                                 }
+                                                 else
+                                                 {
+                                                    <img style="width:60px; height:60px;" src="~/Content/images/companies/@item.company.logo_img" alt="img">
+                                                 }
+
+
+
+                                                 </a></div>
 
                                             <div class="text-col">
 

@@ -112,6 +112,7 @@
                     <div class="col-md-3 col-sm-6">
 
                         <div class="box">
+                            
                             <img src="~/Content/images/categories-icon-1.png" alt="img">
 
                             <h4><a href="#">@item.jobcategory_name</a></h4>
@@ -153,7 +154,18 @@
 
                                     <div class="box">
 
-                                        <div class="thumb"><a href="~/Jobs/Details/@item.job_id"><img src="~/Content/images/recent-job-thumb-1.jpg" alt="img"></a></div>
+                                        <div class="thumb"><a href="~/Jobs/Details/@item.job_id">
+
+                                                               @if (item.company_id == null || item.company.logo_img == null)
+                                                               {
+                                                                   <img style="width:60px; height:60px;" src="~/Content/images/Guest.png" alt="img">
+                                                               }
+                                                               else
+                                                               {
+                                                                   <img style="width:60px; height:60px;" src="~/Content/images/companies/@item.company.logo_img" alt="img">
+                                                               }
+                                               
+                                             </a></div>
 
                                         <div class="text-col">
 
@@ -246,20 +258,38 @@
 
                         <div class="post-box">
 
-                            <div class="frame"><a href="#"><img src="~/Content/images/blog/post-img-1.jpg" alt="img"></a></div>
+                            <div class="frame"><a href="~/Blogs/Details/@item.blog_id">
+                                @if (item.blog_img == null)
+                            {
+                                <img style="width:360px;height:200px;" src="~/Content/images/blog.jpg" alt="img">
+                            }
+                            else
+                            {
+                                <img style="width:360px;height:200px;" src="~/Content/images/blog/@item.blog_img" alt="img">
+                            }
+                                 </a></div>
 
                             <div class="text-box">
                                 <strong class="date"><i class="fa fa-calendar"></i>@item.blog_datetime.ToString("mm/dd/yyyy")</strong>
 
                                 <h4>
-                                    <a href="#">
+                                    <a href="~/Blogs/Details/@item.blog_id">
                                         @item.blog_title
                                     </a>
                                 </h4>
 
                                 <p>@item.blog_alerttext</p>
 
-                                <div class="thumb"><a href="#"><img src="~/Content/images/admin-img.jpg" alt="img"></a></div>
+                                <div class="thumb"><a href="~/Companies/Details/@item.company_id">
+                                                       @if (item.company.logo_img == null)
+                                                       {
+                                                           <img src="~/Content/images/comp.jpg" alt="img">
+                                                       }
+                                                       else
+                                                       {
+                                                           <img src="~/Content/images/companies/@item.company.logo_img" alt="img">
+                                                       }
+                                     </a></div>
 
                                 <strong class="name"><span>By</span> @item.company.company_name</strong>
                             </div>

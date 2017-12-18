@@ -1,6 +1,10 @@
 ﻿@model JobInn.Models.TablePage.HomeViewModel
+@using PagedList
+@using PagedList.Mvc
+
+
 @{
-    ViewBag.Title = "Ana Sehife";
+    ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
 }
 
@@ -14,7 +18,7 @@
 
         <div class="holder">
 
-            <h1>Online İş axtarın və ya iş elanı verin!</h1>
+            <h1>Search Online Jobs or Hire Employees!</h1>
 
             <form action="#">
 
@@ -24,19 +28,19 @@
 
                         <div class="col-md-4 col-sm-4">
 
-                            <input type="text" placeholder="İş başlığı, bacarıq, şirkət adı daxil edin">
+                            <input type="text" placeholder="Enter Job Title">
 
                         </div>
 
                         <div class="col-md-4 col-sm-4">
 
-                            <input type="text" placeholder="Şəhər seçin">
+                            <input type="text" placeholder="Enter City, State, Province or Country">
 
                         </div>
 
                         <div class="col-md-3 col-sm-3">
 
-                            <input type="text" placeholder="Kategoriya">
+                            <input type="text" placeholder="Category">
 
                         </div>
 
@@ -65,8 +69,8 @@
             </div>
 
             <div class="btn-row">
-                <a href="~/Jobseekers/Create"><i class="fa fa-user"></i>Mən iş axtarıram</a>
-                <a href="~/Jobs/Create"><i class="fa fa-building-o"></i>Mən iş elanı verirəm</a>
+                <a href="~/Jobseekers/Create"><i class="fa fa-user"></i>I’m a Jobseeker</a>
+                <a href="~/Jobs/Create"><i class="fa fa-building-o"></i>I’m an Employer</a>
             </div>
 
         </div>
@@ -78,8 +82,8 @@
         <div class="container">
 
             <div class="holder">
-                <a href="~/Jobs/Index" class="btn-brows">İş axtar</a>
-                <strong class="title">San Francisco, Palo Alto, Mountain View, Sacramento, Nyu-York, Böyük Britaniya, Asiya Pasifiklərində İş tapın</strong>
+                <a href="~/Jobs/Index" class="btn-brows">Browse Jobs</a>
+                <strong class="title">Finds Jobs in San Francisco, Palo Alto, Mountain View, Sacramento, New York, United Kindom, Asia Pacific</strong>
             </div>
 
         </div>
@@ -117,7 +121,7 @@
 
                             <h4><a href="#">@item.jobcategory_name</a></h4>
 
-                            <strong>@item.job.Count iş mövcuddur</strong>
+                            <strong>@item.job.Count Jobs</strong>
 
                             <p>Available in @item.jobcategory_name</p>
 
@@ -195,12 +199,17 @@
 
                         </ul>
 
-                        <div id="loadMore"> <a href="#" class="load-more"><i class="fa fa-user"></i>Load More Jobs</a></div>
-
+                        @*<div class="row">
+                            <div class="col-md-8 text-center">
+                                <div class="pagedList pagination-lg">
+                                    @Html.PagedListPager(Model.job, Page => Url.Action("Index", new { Page}),PagedListRenderOptions.Classic)
+                                </div>
+                            </div>
+                        </div>*@
                     </div>
 
                 </div>
-
+             
                 <div class="col-md-3 col-sm-4">
 
                     <h2>Featured Jobs</h2>

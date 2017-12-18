@@ -50,9 +50,13 @@ namespace JobInn
                  "~/Content/js/jquery.velocity.min.js",
                 "~/Content/js/owl.carousel.min.js",
                 "~/Content/js/jquery-1.11.3.min.js",
-                "~/Content/js/jquery.accordion.js"
-               // "~/Content/js/editor.js"
+                "~/Content/js/jquery.accordion.js",
+                "~/Content/js/editor.js"
                 ));
+
+            //Creating bundle for your js files
+            bundles.Add(new ScriptBundle("~/bundles/tinymce").Include(
+            "~/Scripts/tinymce/tiny_mce.js"));
 
         }
     }

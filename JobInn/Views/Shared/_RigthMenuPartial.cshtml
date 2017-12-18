@@ -1,0 +1,41 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <strong class="logo-2">
+        <a href="~/Home/Index">
+        @if (Session["Img"] == null)
+        {
+             <img style="width:120px;
+                         height:120px;
+                         border-radius:10px;
+                         border:solid 1px gray;
+                         background: white" src="~/Content/images/Guest.png" alt="img">
+        }
+        else
+        {
+            <img style="width:120px;
+                        height:120px;
+                        border-radius:10px;
+                        border:solid 1px gray;
+                        background: white;" src="~/Content/images/@Convert.ToString(Session["Img"])" alt="img">
+
+        }
+        </a>
+    </strong>
+}
+else
+{
+    <div class="cp-top-bar">
+
+    <h4>For any Queries: +800 123 4567</h4>
+
+    <div class="login-section">
+        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn-login" })
+
+        @Html.ActionLink("Signup", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn-login" })
+      
+        
+    </div>
+
+</div>
+}
+

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace JobInn.Models.TablePage.Blogs
 {
@@ -17,6 +18,8 @@ namespace JobInn.Models.TablePage.Blogs
         public string blog_title { get; set; }
         [Column(TypeName = "ntext")]
         [Display(Name = "Bloq əsas mətn")]
+        [AllowHtml]
+        [UIHint("tinymce_full_compressed")]
         public string blog_maintext { get; set; }
         [Column(TypeName = "nvarchar")]
         [Display(Name = "Bloq tanıtım mətni")]

@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace JobInn.Models.TablePage
 {
@@ -22,7 +23,8 @@ namespace JobInn.Models.TablePage
         [Display(Name = "Şirkət haqqında kiçik başliq")]
         public string tagline { get; set; }
         [Column(TypeName = "ntext")]
-        [Display(Name = "Şirkət haqqında ətraflı məlumat")]
+        [AllowHtml]
+        [UIHint("tinymce_full_compressed")]
         public string description { get; set; }
         [Column(TypeName = "nvarchar")]
         [Display(Name = "Video link")]

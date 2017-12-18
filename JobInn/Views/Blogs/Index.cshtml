@@ -1,5 +1,6 @@
-﻿@model IEnumerable<JobInn.Models.TablePage.Blogs.Blog>
-
+﻿@model IPagedList<JobInn.Models.TablePage.Blogs.Blog>
+@using PagedList
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
@@ -90,9 +91,17 @@
 
                 </div>
 
+                <div class="row">
+                    <div class="col-md-8 text-center">
+                        <div class="pagedList pagination-lg">
+                            @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }), PagedListRenderOptions.Classic)
+                        </div>
+                    </div>
+                </div>
+
                 <!--PAGINATION SECTION START-->
 
-                <div class="pagination-box">
+                @*<div class="pagination-box">
 
                     <nav>
 
@@ -114,7 +123,7 @@
 
                     </nav>
 
-                </div>
+                </div>*@
 
                 <!--PAGINATION SECTION END-->
 

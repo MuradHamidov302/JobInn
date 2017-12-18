@@ -172,7 +172,8 @@
                             <h4>Description</h4>
 
                             <div class="text-editor-box">
-                                @Html.TextAreaFor(model => model.description, new { htmlAttributes = new { @class = "txtEditor form-control" } })
+
+                                @Html.EditorFor(model => model.description, new { @class = "txtEditor form-control" })
 
                             </div>
 

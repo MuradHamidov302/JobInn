@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace JobInn.Models.TablePage.Employers
 {
@@ -43,6 +44,8 @@ namespace JobInn.Models.TablePage.Employers
         public int? company_id { get; set; }
         public string user_id { get; set; }
         [Column(TypeName = "ntext")]
+        [AllowHtml]
+        [UIHint("tinymce_full_compressed")]
         public string description { get; set; }
 
         [ForeignKey("city_id")]

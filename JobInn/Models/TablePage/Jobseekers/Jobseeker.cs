@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace JobInn.Models.TablePage.Jobseekers
 {
@@ -33,7 +34,8 @@ namespace JobInn.Models.TablePage.Jobseekers
         [Display(Name = "Sizin şəkliniz")]
         public string your_img { get; set; }
         [Column(TypeName = "ntext")]
-        [Display(Name = "Özünüz haqqında məlumat")]
+        [AllowHtml]
+        [UIHint("tinymce_full_compressed")]
         public string description { get; set; }
         [Column(TypeName = "ntext")]
         [Display(Name = "Sənəd əlavə edin(Cv-form, Sertifikat vı.s)")]

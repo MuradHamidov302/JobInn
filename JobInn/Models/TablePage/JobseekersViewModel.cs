@@ -1,9 +1,11 @@
 ﻿using JobInn.Models.TablePage.Jobseekers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace JobInn.Models.TablePage
 {
@@ -16,6 +18,8 @@ namespace JobInn.Models.TablePage
         public string min_rate { get; set; }
         public string your_img { get; set; }
         [Column(TypeName = "ntext")]
+        [AllowHtml]
+        [UIHint("tinymce_full_compressed")]
         public string description1 { get; set; }
         public string file { get; set; }
         public string user_id { get; set; }

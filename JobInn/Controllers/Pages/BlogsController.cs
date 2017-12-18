@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using JobInn.Models;
 using JobInn.Models.TablePage.Blogs;
 using System.IO;
+using PagedList;
 
 namespace JobInn.Controllers.Pages
 {
@@ -19,10 +20,10 @@ namespace JobInn.Controllers.Pages
 
         [AllowAnonymous]
         // GET: Blogs
-        public ActionResult Index()
+        public ActionResult Index(int? Page)
         {
-            var blog = db.blog.Include(b => b.company);
-            return View(blog.ToList());
+            var blog = db.blog.Include(b => b.company).ToList().ToPagedList(Page ?? 1, 6);
+            return View(blog);
         }
         [AllowAnonymous]
         // GET: Blogs/Details/5

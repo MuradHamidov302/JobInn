@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using JobInn.Models;
 using JobInn.Models.TablePage;
 using System.IO;
+using PagedList;
 
 namespace JobInn.Controllers.Pages
 {

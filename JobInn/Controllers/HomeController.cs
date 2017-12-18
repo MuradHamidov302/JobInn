@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace JobInn.Controllers
 {
@@ -22,6 +24,11 @@ namespace JobInn.Controllers
             vm.jobcategory = db.jobcategory.ToList();
 
             return View(vm);
+        }
+        public ActionResult JobPartial(int? Page)
+        {
+            var job = db.job.OrderBy(x=>x.clossing_date).ToPagedList(Page?? 1, 5);
+            return View(job);
         }
 
 

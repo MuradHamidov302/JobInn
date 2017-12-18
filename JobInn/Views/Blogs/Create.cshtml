@@ -161,8 +161,11 @@
                             <div class="text-editor-box">
 
                                 <label>Main Text *</label>
-                                @Html.TextAreaFor(model => model.blog_maintext, new { htmlAttributes = new { @class = "txtEditor form-control" } })
+                                <div class="text-editor-box">
 
+                                    @Html.EditorFor(model => model.blog_maintext, new { @class = "txtEditor form-control" })
+
+                                </div>
                                 </div>
                             </div>
 

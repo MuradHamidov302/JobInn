@@ -9,8 +9,15 @@
             <div class="dropdown">
 
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <img style="width:50px;height:50px;border-radius:100%;" title="@User.Identity.GetUserName()" src="~/Content/images/24.jpg" alt="img">
-                    
+                    @if (Session["Img"] == null)
+                    {
+                        <img style="width:50px;height:50px;border-radius:100%;border:1px solid gray;" title="@User.Identity.GetUserName()" src="~/Content/images/Guest.png" alt="img">
+                    }
+                    else
+                    {
+                        <img style="width:50px;height:50px;border-radius:100%;" title="@User.Identity.GetUserName()" src="~/Content/images/@Convert.ToString(Session["Img"])" alt="img">
+                    }
+
                     @if (Session["UserId"] != null)
                     {<div style="width:10px;
                                  height:10px; 
@@ -29,16 +36,16 @@
                @* <li> <a href="~/Profile/UserDetail/@Session["UserId"].ToString()">12345678</a></li>*@
 
                     <li>
-                    @Html.ActionLink("Şifrəni Dəyiş", "ChangePassword", "Manage")</li>
+                    @Html.ActionLink("Change Password", "ChangePassword", "Manage")</li>
 
-                    <li><a href="#">Profili Dəyiş</a></li>
+                    <li><a href="#">Edit Profile</a></li>
                     <li>
                    
                         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                          {
                             @Html.AntiForgeryToken()
 
-                              <a href="javascript:document.getElementById('logoutForm').submit()">Çıxış</a>
+                              <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
                          }
                     </li>
                     
@@ -61,13 +68,13 @@
 
                     <li>
                         <a href="javascript:void(0)" class="login-round"><i class="fa fa-sign-in"></i></a>
-                        @Html.ActionLink("Profilə daxil ol", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn-login" })
+                        @Html.ActionLink("Log in with Jobinn", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn-login" })
                 
                     </li>
 
                     <li> 
                     <a href="javascript:void(0)" class="login-round"><i class="fa fa-user-plus"></i></a>
-                        @Html.ActionLink("Qeydiyyatdan keç", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn-login" })
+                        @Html.ActionLink("Sign in with Jobinn", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn-login" })
                     </li>
                  
                 </ul>

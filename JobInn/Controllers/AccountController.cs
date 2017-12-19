@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using JobInn.Models;
+using System.IO;
+using System.Net;
+using System.Collections.Generic;
 
 namespace JobInn.Controllers
 {
@@ -155,9 +158,9 @@ namespace JobInn.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model,HttpPostedFileBase profimg)
         {
-            
+            ApplicationDbContext db = new ApplicationDbContext();
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { Email = model.Email,
@@ -165,9 +168,25 @@ namespace JobInn.Controllers
                                                  first_name=model.first_name,
                                                  last_name=model.last_name,
                                                  PhoneNumber=model.PhoneNumber,
-                                                // profil_img=model.profil_img
+                                                 //profil_img=model.profil_img
 
                 };
+
+                if (profimg != null)
+                {
+                    var filename = profimg.FileName;
+                    string ext = Path.GetExtension(profimg.FileName);
+
+                    string FileYolu = Guid.NewGuid().ToString() + filename;
+                    var yuklemeYeri = Server.MapPath("/Content/images/profile/") + FileYolu;
+                    profimg.SaveAs(yuklemeYeri);
+                    user.profil_img= FileYolu;
+                    
+                }
+                Session["UserId"] = user.Id;
+                Session["Img"] = user.profil_img;
+                Session["UserName"] = user.UserName;
+                Session["Email"] = user.Email;
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -438,6 +457,21 @@ namespace JobInn.Controllers
 
             base.Dispose(disposing);
         }
+
+        //public ActionResult UserDetails()
+        //{
+            
+        //    //ApplicationUser u = UserManager.FindById(User.Identity.GetUserId());
+
+        //    if (u == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(u);
+           
+        //}
+
+
 
         #region Helpers
         // Used for XSRF protection when adding external logins

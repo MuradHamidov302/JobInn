@@ -32,7 +32,7 @@
                 <div class="thumb"><img src="~/Content/images/signup.png" alt="img"></div>
 
 
-                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" ,enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
                    
@@ -64,17 +64,16 @@
 
                     </div>
 
-                    @*<div class="upload-box">
+                    <div class="upload-box">
 
                         <div class="hold">
                             <a href="#">Maximum file size 20 MB</a> <span class="btn-file">
                                Profil Image
-                                @Html.TextBoxFor(m => m.profil_img, new { @class = "form-control" , @type = "file" })
-                              
+                               <input name="profimg" type="file" />
                             </span>
                         </div>
 
-                    </div>*@
+                    </div>
 
 
                     <div class="input-box">
@@ -83,15 +82,15 @@
 
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-box" style="margin-bottom:20px">
                         <i class="fa fa-unlock"></i>
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @style = "height:43px; padding-left:50px;" })
 
                     </div>
 
-                    <div class="input-box">
+                    <div class="input-box" style="margin-bottom:20px">
                         <i class="fa fa-unlock"></i>
-                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password", @style = "height:43px; padding-left:50px;" })
 
                     </div>
 

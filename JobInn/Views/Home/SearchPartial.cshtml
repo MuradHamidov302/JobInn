@@ -1,0 +1,100 @@
+﻿@model IEnumerable<JobInn.Models.TablePage.Employers.Job>
+
+@{
+    ViewBag.Title = "SearchPartial";
+    Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
+}
+
+<h2>SearchPartial</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.city.city_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.company.company_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.jobcategory.jobcategory_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.jobtype.jobtype_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user.first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.concerperson_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.job_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salary_package)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.clossing_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.city.city_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.company.company_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.jobcategory.jobcategory_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.jobtype.jobtype_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user.first_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.concerperson_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.job_title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.salary_package)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.clossing_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.job_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.job_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.job_id })
+        </td>
+    </tr>
+}
+
+</table>

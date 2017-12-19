@@ -687,7 +687,6 @@
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\Blogs\CommentPartial.cshtml" />
     <Content Include="Views\Shared\_RigthMenuPartial.cshtml" />
-    <Content Include="Views\TinyMCESample\Index.cshtml" />
     <Content Include="Views\Home\JobPartial.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
@@ -701,6 +700,11 @@
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_full_compressed.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_full.cshtml" />
+    <Content Include="Views\TinyMCESample\Index.cshtml" />
+    <Content Include="Views\Blogs\CommentRply.cshtml" />
+    <Content Include="Views\Home\SearchPartial.cshtml" />
+    <Content Include="Views\Home\SearchPartilas.cshtml" />
+    <Content Include="Views\Home\SearchList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

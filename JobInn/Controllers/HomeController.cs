@@ -18,6 +18,9 @@ namespace JobInn.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            ViewBag.city_id = new SelectList(db.city, "city_id", "city_name");
+            ViewBag.jobcategory_id = new SelectList(db.jobcategory, "jobcategory_id", "jobcategory_name");
+
             vm.city = db.city.ToList();
             vm.blog = db.blog.ToList();
             vm.job = db.job.ToList();
@@ -27,10 +30,15 @@ namespace JobInn.Controllers
         }
         public ActionResult JobPartial(int? Page)
         {
-            var job = db.job.OrderBy(x=>x.clossing_date).ToPagedList(Page?? 1, 5);
+            var job = db.job.OrderBy(x=>x.clossing_date).ToList().ToPagedList(Page?? 1, 3);
             return View(job);
         }
 
-
+        public ActionResult SearchList(string search=null, string citys=null,string jobcategory=null)
+        {
+            var Search = db.job.Where(j => j.job_title.Contains(search)).Where(c => c.city.city_name.Contains(citys)).Where(c => c.jobcategory.jobcategory_name.Contains(jobcategory)).ToList();
+          
+            return View(Search.OrderByDescending(item => item.clossing_date));
+        }
     }
 }

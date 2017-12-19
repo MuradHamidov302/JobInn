@@ -15,7 +15,7 @@
                     }
                     else
                     {
-                        <img style="width:50px;height:50px;border-radius:100%;" title="@User.Identity.GetUserName()" src="~/Content/images/@Convert.ToString(Session["Img"])" alt="img">
+                        <img style="width:50px;height:50px;border-radius:100%;" title="@User.Identity.GetUserName()" src="~/Content/images/profile/@Convert.ToString(Session["Img"])" alt="img">
                     }
 
                     @if (Session["UserId"] != null)
@@ -33,7 +33,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
                   
-               @* <li> <a href="~/Profile/UserDetail/@Session["UserId"].ToString()">12345678</a></li>*@
+                <li>@Html.ActionLink("UserDetails", "UserDetails", "Account")</li>
 
                     <li>
                     @Html.ActionLink("Change Password", "ChangePassword", "Manage")</li>

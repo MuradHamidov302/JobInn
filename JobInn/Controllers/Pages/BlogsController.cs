@@ -13,7 +13,7 @@ using PagedList;
 
 namespace JobInn.Controllers.Pages
 {
-    //[Authorize]
+    [Authorize]
     public class BlogsController : Controller
     {
        ApplicationDbContext db = new ApplicationDbContext();
@@ -164,7 +164,21 @@ namespace JobInn.Controllers.Pages
                 });
                 db.SaveChanges();
             
-            return Json(false,JsonRequestBehavior.DenyGet);
+            return Json(false,JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult CommentRply(int? id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public  ActionResult CommentRply(CommentReply rply,int? id)
+        {
+            BlogComment blogcomment = db.blogcomment.Find(id);
+            rply.blogcomment_id = blogcomment.blogcomment_id;
+            db.commentreply.Add(rply);
+            db.SaveChanges();
+            return View(rply);
         }
     }
 }

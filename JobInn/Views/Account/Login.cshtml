@@ -56,9 +56,10 @@
                         <div class="input-box">
                             <i class="fa fa-unlock"></i>
 
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Şifrə"})
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Şifrə" , @style="height:43px; padding-left:50px;"} )
+                              
                             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-
+                           
                         </div>
 
                         <div class="check-box">

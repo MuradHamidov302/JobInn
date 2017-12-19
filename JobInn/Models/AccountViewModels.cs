@@ -65,9 +65,9 @@ namespace JobInn.Models
     public class RegisterViewModel
     {
         //[Required]
-       // public string UseName { get; set; }
-        
-       // public string profil_img { get; set; }
+        // public string UseName { get; set; }
+
+        public string profil_img { get; set; }
 
         public string PhoneNumber { get; set; }
 
@@ -122,4 +122,6 @@ namespace JobInn.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+
 }

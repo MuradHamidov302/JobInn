@@ -21,10 +21,9 @@ namespace JobInn.Models.TablePage.Blogs
         [Display(Name = "E-mail ünvanı")]
         public string email { get; set; }
         [Column(TypeName = "ntext")]
-        [Display(Name = "Şərhiniz")]
         public string comment_text { get; set; }
         public int blogcomment_id { get; set; }
-
+        
         [ForeignKey("blogcomment_id")]
         public virtual BlogComment blogcomment { get; set; }
     }

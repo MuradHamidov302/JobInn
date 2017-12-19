@@ -131,17 +131,22 @@
                                 <div class="comment">
                                     <div class="col-md-12">
                                         <h3>Comments</h3>
+                                        <h6 class="reply"></h6>
                                         <ul>
-
+                                            
                                             @foreach (var item in Model.blogcomment)
-            {
+                                              {   
                                                 <li>
                                                     <img class="img-thumbnail" src="~/Content/images/Guest.png" alt="">
                                                     <div class="block">
-                                                        <h4>@item.user_name   <button class="pull-right btn-rply">Cavabla</button></h4>
+                                                        <h4>@item.user_name   
+                                                        
+                                                        <button class="pull-right btn-rply" data-id="@item.blogcomment_id">Reply</button></h4>
 
                                                         <p>@item.comment_text</p>
+                                                       
                                                     </div>
+                                                   
                                                     <ul>
                                                         @foreach (var item1 in item.commentreply)
                                                         {
@@ -156,12 +161,13 @@
                                                     </ul>
                                                 </li>
                                             }
-
-
+                                           
                                         </ul>
+                                        
                                     </div>
+                                    
                                 </div>
-                                <button class="Add" data-id="@Model.blogcomment.">sdfgyuiop</button>
+                              @* <button class="Add" data-id="@Model.blogcomment.">sdfgyuiop</button>*@
                                 </div>
 
                                 <form role="form">
@@ -189,7 +195,7 @@
 
                                         <div class="col-md-12">
 
-                                            <input class=" Add" data-id="@Model.blog_id" type="submit" id="send" value="Serh elave et">
+                                            <input class=" Add" data-id="@Model.blog_id" type="submit" id="send" value="submit">
 
                                         </div>
 
@@ -330,7 +336,7 @@
 
 <script type="text/javascript" >
     $(document).ready(function () {
-        @*$("#send").click(function () { 
+        $("#send").click(function () { 
         var coments = $("#comment1").val();
         var names = $("#name").val();
         var emails = $("#Email").val();
@@ -344,7 +350,23 @@
               
             }
         });
-        });*@
+        });
+
+
+        $(".btn-rply").click(function (e) {
+            var row = $(this).data("id");
+            //alert(row);
+            $.ajax({
+                type: "GET",
+                url: "/Blogs/CommentRply",
+                data: { id: row },
+                success: function (data) {
+                    $(".reply").html(data);
+                }, error: function () {
+                    alert(falase);
+                }
+            })
+        })
 
         $("button.Add").click(function (e) {
             //var row = $(this).data("id");

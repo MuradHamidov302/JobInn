@@ -148,32 +148,21 @@ namespace JobInn.Controllers.Pages
             return View(viewModel);
         }
 
-
-        //// GET: Jobseekers/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Jobseeker jobseeker = db.jobseeker.Find(id);
-        //    if (jobseeker == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(jobseeker);
-        //}
-
-     
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteJobseeker(int? id)
         {
-            var jobseekerDel = db.jobseeker.Where(b => b.jobseekers_id == id).SingleOrDefault();
-
-            db.jobseeker.Remove(jobseekerDel);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var jobseekers = db.jobseeker.Find(id);
+            if (jobseekers == null)
+            {
+                return HttpNotFound();
+            }
+            db.jobseeker.Remove(jobseekers);
             db.SaveChanges();
-            return RedirectToAction("Index", "Jobseekers");
-       
+            return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)

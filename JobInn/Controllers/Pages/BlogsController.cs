@@ -78,39 +78,6 @@ namespace JobInn.Controllers.Pages
             return View(blog);
         }
 
-        // GET: Blogs/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Blog blog = db.blog.Find(id);
-            if (blog == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.company_id = new SelectList(db.company, "company_id", "company_name", blog.company_id);
-            return View(blog);
-        }
-
-        // POST: Blogs/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "blog_id,blog_title,blog_maintext,blog_alerttext,blog_smallhead,blog_smalltext,blog_img,blog_datetime,company_id")] Blog blog)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(blog).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.company_id = new SelectList(db.company, "company_id", "company_name", blog.company_id);
-            return View(blog);
-        }
-
         // GET: Blogs/Delete/5
         public ActionResult Delete(int? id)
         {

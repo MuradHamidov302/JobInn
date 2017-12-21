@@ -90,7 +90,7 @@ namespace JobInn.Controllers.Pages
         
 
         // GET: Jobs/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult DeleteJob(int? id)
         {
             if (id == null)
             {
@@ -101,19 +101,12 @@ namespace JobInn.Controllers.Pages
             {
                 return HttpNotFound();
             }
-            return View(job);
-        }
-
-        // POST: Jobs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Job job = db.job.Find(id);
             db.job.Remove(job);
             db.SaveChanges();
             return RedirectToAction("Index");
+            
         }
+        
 
         protected override void Dispose(bool disposing)
         {

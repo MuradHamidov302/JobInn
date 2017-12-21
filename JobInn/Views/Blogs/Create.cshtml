@@ -202,7 +202,7 @@
                             <div class="col-md-6 col-sm-6">
 
                                 <label>Your Company Name</label>
-                                @Html.DropDownList("company_id", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.DropDownList("company_id", null, "", htmlAttributes: new { @class = "form-control" })
 
                             </div>
 
@@ -249,3 +249,13 @@
     </div>
 
     <!--MAIN END-->
+
+    @section scripts{
+        <script src="~/Scripts/tinymce/tinymce.js"></script>
+<script>
+    tinyMCE.init(
+        {
+            selector: "textarea"
+        });
+        </script>
+        }

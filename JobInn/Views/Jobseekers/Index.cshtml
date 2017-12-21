@@ -206,7 +206,7 @@
                                             <a href="~/Jobseekers/Details/@item.jobseekers_id" class="contact">@item.jobtype.jobtype_name</a>
                                             @if(Convert.ToString(Session["UserId"]) == item.user_id)
                                             {
-                                                <a href="~/Jobseekers/DeleteConfirmed/@item.jobseekers_id" class="resume">Remove</a>
+                                                <a href="~/Jobseekers/DeleteJobseeker/@item.jobseekers_id" class="resume">Remove</a>
                                             }
                                             
                                            </div>

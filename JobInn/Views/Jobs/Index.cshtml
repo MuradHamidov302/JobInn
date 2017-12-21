@@ -190,6 +190,10 @@
 
                                             <strong class="price"><i class="fa fa-money"></i>@item.salary_package</strong> 
                                             <a href="~/Jobs/Details/@item.job_id" class="btn-1 @item.jobtype.jobtypecolor.color_class ripple">@item.jobtype.jobtype_name</a>
+                                            @if (Convert.ToString(Session["UserId"]) == item.user_id)
+                                            {
+                                                <a href="~/Jobs/DeleteJob/@item.job_id" class="btn-1 @item.jobtype.jobtypecolor.color_class ripple">Remove</a>
+                                            }
                                         </div>
 
                                     </li>
@@ -217,7 +221,14 @@
 
                                         <div class="thumb">
                                             <a href="~/Jobseekers/Details/@item.jobseekers_id">
-                                            <img style="width:100%;height:175px;" src="~/Content/images/profile/@item.your_img" alt="img"></a>
+                                            @if (item.your_img == null)
+                                            {
+                                                 <img style="width:100%;height:175px;" src="~/Content/images/Guest.png" alt="img">
+                                            }
+                                            else
+                                            {
+                                                <img style="width:100%;height:175px;" src="~/Content/images/profile/@item.your_img" alt="img">}
+                                            </a>
 
                                             <div class="caption"><img src="~/Content/images/envato-text.png" alt="envato"></div>
 

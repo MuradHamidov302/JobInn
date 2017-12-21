@@ -37,12 +37,12 @@
 
             <div class="container">
 
-                <div class="row">
+                <div class="row" style="max-height:350px;">
                     @foreach (var item in Model.OrderByDescending(item=>item.blog_datetime))
                     {
                         <div class="col-md-4 col-sm-6">
 
-                            <div class="post-box">
+                            <div class="post-box" style="height:460px;">
 
                                 <div class="frame"><a href="~/Blogs/Details/@item.blog_id">
 
@@ -66,7 +66,8 @@
 
                                     <p> @item.blog_alerttext</p>
 
-                                    <div class="thumb"><a href="~/Companies/Details/@item.company_id">
+                                    <div class="thumb">
+                                    <a href="~/Companies/Details/@item.company_id">
                                         @if (item.company.logo_img == null)
                                         {
                                             <img src="~/Content/images/comp.jpg" alt="img">
@@ -90,42 +91,16 @@
 
 
                 </div>
-
+                <hr />
                 <div class="row">
-                    <div class="col-md-8 text-center">
+                    <div class="col-md-12 text-center">
                         <div class="pagedList pagination-lg">
                             @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }), PagedListRenderOptions.Classic)
                         </div>
                     </div>
                 </div>
 
-                <!--PAGINATION SECTION START-->
-
-                @*<div class="pagination-box">
-
-                    <nav>
-
-                        <ul class="pager">
-
-                            <li><a href="#" class="prv">Previous</a></li>
-
-                            <li><a href="#">1</a></li>
-
-                            <li class="active"><a href="#">2</a></li>
-
-                            <li><a href="#">3</a></li>
-
-                            <li><a href="#">4</a></li>
-
-                            <li><a href="#" class="next">Next</a></li>
-
-                        </ul>
-
-                    </nav>
-
-                </div>*@
-
-                <!--PAGINATION SECTION END-->
+             
 
 
 

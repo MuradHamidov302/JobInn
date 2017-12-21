@@ -166,12 +166,13 @@ namespace JobInn.Controllers.Pages
             
             return Json(false,JsonRequestBehavior.AllowGet);
         }
-
+        [AllowAnonymous]
         public ActionResult CommentRply(int? id)
         {
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
         public  ActionResult CommentRply(CommentReply rply,int? id)
         {
             BlogComment blogcomment = db.blogcomment.Find(id);

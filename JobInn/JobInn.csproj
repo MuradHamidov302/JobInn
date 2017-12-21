@@ -206,6 +206,7 @@
     <Compile Include="Areas\Admin\Models\Info.cs" />
     <Compile Include="Areas\Admin\Models\PrivacyPolicy.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Pages\BlogsController.cs" />
@@ -627,7 +628,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -658,12 +658,10 @@
     <Content Include="Views\Jobs\Create.cshtml" />
     <Content Include="Views\Jobs\Delete.cshtml" />
     <Content Include="Views\Jobs\Details.cshtml" />
-    <Content Include="Views\Jobs\Edit.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
     <Content Include="Views\Jobseekers\Create.cshtml" />
     <Content Include="Views\Jobseekers\Delete.cshtml" />
     <Content Include="Views\Jobseekers\Details.cshtml" />
-    <Content Include="Views\Jobseekers\Edit.cshtml" />
     <Content Include="Views\Jobseekers\Index.cshtml" />
     <Content Include="Views\Companies\Create.cshtml" />
     <Content Include="Views\Companies\Delete.cshtml" />
@@ -673,19 +671,9 @@
     <Content Include="Views\Blogs\Create.cshtml" />
     <Content Include="Views\Blogs\Delete.cshtml" />
     <Content Include="Views\Blogs\Details.cshtml" />
-    <Content Include="Views\Blogs\Edit.cshtml" />
     <Content Include="Views\Blogs\Index.cshtml" />
-    <Content Include="Views\PrivacyPolicies\Create.cshtml" />
-    <Content Include="Views\PrivacyPolicies\Delete.cshtml" />
-    <Content Include="Views\PrivacyPolicies\Details.cshtml" />
-    <Content Include="Views\PrivacyPolicies\Edit.cshtml" />
     <Content Include="Views\PrivacyPolicies\Index.cshtml" />
     <Content Include="Views\Contacts\Create.cshtml" />
-    <Content Include="Views\Contacts\Delete.cshtml" />
-    <Content Include="Views\Contacts\Details.cshtml" />
-    <Content Include="Views\Contacts\Edit.cshtml" />
-    <Content Include="Views\Contacts\Index.cshtml" />
-    <Content Include="Views\Blogs\CommentPartial.cshtml" />
     <Content Include="Views\Shared\_RigthMenuPartial.cshtml" />
     <Content Include="Views\Home\JobPartial.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
@@ -702,9 +690,10 @@
     <Content Include="Views\Shared\EditorTemplates\tinymce_full.cshtml" />
     <Content Include="Views\TinyMCESample\Index.cshtml" />
     <Content Include="Views\Blogs\CommentRply.cshtml" />
-    <Content Include="Views\Home\SearchPartial.cshtml" />
     <Content Include="Views\Home\SearchPartilas.cshtml" />
     <Content Include="Views\Home\SearchList.cshtml" />
+    <Content Include="Views\Error\ErrorPage.cshtml" />
+    <Content Include="Views\Jobs\JobList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

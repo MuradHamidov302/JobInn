@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "ErrorPage";
+    Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
+}
+
+<style>
+    .error1 {
+        color: #1B8AF3 !important;
+        text-align:center;
+        font:bold;
+        padding-bottom:20px;
+    }
+    .metro {
+        cursor:pointer;
+        border-radius: 8px;
+        background-color: #1B8AF3;
+        padding: 50px 0px;
+        text-align: center;
+        margin: 10px 0px;
+        opacity: 0.5;
+    }
+        .metro i {
+            color: white;
+            font-size:50px;
+        }
+        .metro:hover {
+            background-color: blue
+        }
+
+</style>
+
+<br /><br />
+<br /><br />
+
+
+<div class="container">
+    <h1 class="error1">Page Not Found ...</h1>
+    <div class="row ">
+
+        <div class="col-md-4 "><div class="metro">
+            <a href="~/Home/Index/"><i class="fa fa-home" aria-hidden="true">Home</i></a>
+            </div></div>
+        <div class="col-md-4 "><div class="metro">
+            <a href="~/Jobs/Index/"><i class="fa fa-wrench" aria-hidden="true">Jobs</i></a>
+              </div></div>
+        <div class="col-md-4 "><div class="metro">
+            <a href="~/Jobseekers/Index/"><i class="fa fa-briefcase" aria-hidden="true">Jobseekers</i></a>
+              </div></div>
+
+        <div class="col-md-4 "><div class="metro">
+            <a href="~/Blogs/Index/"><i class="fa fa-rss" aria-hidden="true">Blogs</i></a>
+              </div></div>
+        <div class="col-md-4 "><div class="metro">
+            <a href="~/Companies/Index/"><i class="fa fa-building" aria-hidden="true">Companies</i></a>
+              </div></div>
+        <div class="col-md-4 "><div class="metro">
+            <a href="~/Contacts/Index/"><i class="fa fa-flag" aria-hidden="true">Contact</i></a>
+              </div></div>
+    </div>
+</div>

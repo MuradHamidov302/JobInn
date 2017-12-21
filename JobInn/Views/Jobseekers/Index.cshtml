@@ -125,7 +125,7 @@
 
                             <div class="check-filter">
 
-                                <form action="#">
+                                @*<form action="#">
 
                                     <ul>
 
@@ -149,7 +149,7 @@
 
                                     </ul>
 
-                                </form>
+                                </form>*@
 
                             </div>
 
@@ -188,14 +188,7 @@
                                                         </strong>
                                                     </a>
                                                 }
-
-                                            
-
-
                                         </div>
-
-
-
                                         <span class="price"><i class="fa fa-money"></i>@item.min_rate</span>
 
                                         <div class="tags">
@@ -211,8 +204,12 @@
                                         <div class="btn-row">
                                             <a href="~/Jobseekers/Details/@item.jobseekers_id" class="resume"><i class="fa fa-file-text-o"></i>Resume?</a>
                                             <a href="~/Jobseekers/Details/@item.jobseekers_id" class="contact">@item.jobtype.jobtype_name</a>
-                                            <a href="~/Jobseekers/Details/@item.jobseekers_id" class="login">Login to Bookmark this Resume?</a>
-                                        </div>
+                                            @if(Convert.ToString(Session["UserId"]) == item.user_id)
+                                            {
+                                                <a href="~/Jobseekers/DeleteConfirmed/@item.jobseekers_id" class="resume">Remove</a>
+                                            }
+                                            
+                                           </div>
 
                                     </div>
 
@@ -243,7 +240,16 @@
                                             {
                                                 <li>
 
-                                                    <div class="frame"><a href="~/Jobseekers/Details/@item.jobseekers_id"><img src="~/Content/images/resumes/related-img-1.jpg" alt="img"></a></div>
+                                                    <div class="frame"><a href="~/Jobseekers/Details/@item.jobseekers_id">
+                                                                           @if (item.your_img == null)
+                                                                           {
+                                                                               <img style="width:60px;height:60px;" src="~/Content/images/Guest.png" alt="img">
+                                                                           }
+                                                                           else
+                                                                           {
+                                                                               <img style="width:60px;height:60px;" src="~/Content/images/profile/@item.your_img" alt="img">
+                                                                           }
+                                                         </a></div>
 
                                                     <div class="text-box">
                                                         <strong class="name">

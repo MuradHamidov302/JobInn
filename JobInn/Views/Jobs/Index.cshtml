@@ -73,30 +73,20 @@
         <!--SEARCH BAR SECTION START-->
 
         <section class="candidates-search-bar">
-
+        @using (Html.BeginForm("JobList", "Jobs", FormMethod.Post))
+{
             <div class="container">
 
                 <form action="#">
 
                     <div class="row">
 
-                        <div class="col-md-4">
+                        <div class="col-md-11">
 
-                            <input type="text" placeholder="Enter Job Title, Skills or Company">
-
-                        </div>
-
-                        <div class="col-md-4">
-
-                            <input type="text" placeholder="Enter City, State, Province or Country">
+                            <input type="text" name="Search" placeholder="Enter Job Title, Skills or Company">
 
                         </div>
 
-                        <div class="col-md-3">
-
-                            <input type="text" placeholder="Category">
-
-                        </div>
 
                         <div class="col-md-1">
 
@@ -109,6 +99,7 @@
                 </form>
 
             </div>
+         }
 
         </section>
 
@@ -125,7 +116,7 @@
 
                         <div class="check-filter">
 
-                            <form action="#">
+                            @*<form action="#">
 
                                 <ul>
                                     <li>
@@ -150,10 +141,10 @@
 
                                 </ul>
 
-                            </form>
+                            </form>*@
 
                         </div>
-
+                        
                         <div id="content-area">
 
                             <h2>Latest Jobs</h2>
@@ -220,25 +211,34 @@
                         <aside>
 
                             <div class="sidebar">
+                                @foreach (var item in Model.jobseeker.OrderByDescending(item=>item.jobseekers_id).Take(1))
+                                {
+                                    <div class="box">
 
-                                <div class="box">
+                                        <div class="thumb">
+                                            <a href="~/Jobseekers/Details/@item.jobseekers_id">
+                                            <img style="width:100%;height:175px;" src="~/Content/images/profile/@item.your_img" alt="img"></a>
 
-                                    <div class="thumb">
-                                        <a href="#"><img src="images/features-img-1.jpg" alt="img"></a>
+                                            <div class="caption"><img src="~/Content/images/envato-text.png" alt="envato"></div>
 
-                                        <div class="caption"><img src="images/envato-text.png" alt="envato"></div>
+                                        </div>
+
+                                        <div class="text-box">
+                                            <a href="~/Jobseekers/Details/@item.jobseekers_id" class="btn-time">@item.jobtype.jobtype_name</a>
+
+                                            <h4><a href="~/Jobseekers/Details/@item.jobseekers_id">@item.professional_title</a></h4>
+
+                                            <a href="#" class="text"><i class="fa fa-map-marker"></i>@item.location</a> <a href="#" class="text">
+                                            <i class="fa fa-calendar"></i>@item.full_name</a>
+                                            <strong class="price">
+                                            <i class="fa fa-money"></i>@item.min_rate</strong>
+                                            <a href="~/Jobseekers/Details/@item.jobseekers_id" class="btn-apply">Apply for this Job</a>
+                                        </div>
 
                                     </div>
+                                }
 
-                                    <div class="text-box">
-                                        <a href="#" class="btn-time">Part Time</a>
-
-                                        <h4><a href="#">UI/UX Visual Designers</a></h4>
-
-                                        <a href="#" class="text"><i class="fa fa-map-marker"></i>Moorgate, London</a> <a href="#" class="text"><i class="fa fa-calendar"></i>Dec 22, 2015 - Mar 17, 2016 </a> <strong class="price"><i class="fa fa-money"></i>$4000 - $5000</strong> <a href="#" class="btn-apply">Apply for this Job</a>
-                                    </div>
-
-                                </div>
+                             
 
                                 <h2>Jobs Gallery</h2>
 

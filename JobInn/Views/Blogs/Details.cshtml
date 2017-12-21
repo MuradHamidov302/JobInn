@@ -368,19 +368,5 @@
             })
         })
 
-        $("button.Add").click(function (e) {
-            //var row = $(this).data("id");
-           // alert(row);
-            $.ajax({
-                type: "GET",
-                url: "/Blogs/CommentPartial",
-               // data: { id: row },
-                success: function () {
-                    $(".addPage").html(data);
-                }, error: function () {
-                    alert(falase);
-                }
-            })
-        })
     })
 </script>}

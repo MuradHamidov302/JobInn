@@ -23,10 +23,18 @@ namespace JobInn.Controllers.Pages
         [AllowAnonymous]
         public ActionResult Index()
         {
+            vm.jobseeker = db.jobseeker.ToList();
             vm.job = db.job.ToList();
             vm.jobcategory = db.jobcategory.ToList();
             vm.jobtype=db.jobtype.ToList();
             return View(vm);
+        }
+
+        public ActionResult JobList(string Search=null)
+        {
+            var search = db.job.Where(j => j.job_title.Contains(Search)).ToList();
+
+            return View(search);
         }
 
         [AllowAnonymous]
@@ -79,47 +87,7 @@ namespace JobInn.Controllers.Pages
             ViewBag.user_id = new SelectList(db.Users, "Id", "first_name", job.user_id);
             return View(job);
         }
-
-        // GET: Jobs/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Job job = db.job.Find(id);
-            if (job == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.city_id = new SelectList(db.city, "city_id", "city_name", job.city_id);
-            ViewBag.company_id = new SelectList(db.company, "company_id", "company_name", job.company_id);
-            ViewBag.jobcategory_id = new SelectList(db.jobcategory, "jobcategory_id", "jobcategory_name", job.jobcategory_id);
-            ViewBag.jobtype_id = new SelectList(db.jobtype, "jobtype_id", "jobtype_name", job.jobtype_id);
-            ViewBag.user_id = new SelectList(db.Users, "Id", "first_name", job.user_id);
-            return View(job);
-        }
-
-        // POST: Jobs/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "job_id,concerperson_name,email,job_title,location,city_id,jobcategory_id,salary_package,jobtype_id,clossing_date,company_id,user_id")] Job job)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(job).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.city_id = new SelectList(db.city, "city_id", "city_name", job.city_id);
-            ViewBag.company_id = new SelectList(db.company, "company_id", "company_name", job.company_id);
-            ViewBag.jobcategory_id = new SelectList(db.jobcategory, "jobcategory_id", "jobcategory_name", job.jobcategory_id);
-            ViewBag.jobtype_id = new SelectList(db.jobtype, "jobtype_id", "jobtype_name", job.jobtype_id);
-            ViewBag.user_id = new SelectList(db.Users, "Id", "first_name", job.user_id);
-            return View(job);
-        }
+        
 
         // GET: Jobs/Delete/5
         public ActionResult Delete(int? id)

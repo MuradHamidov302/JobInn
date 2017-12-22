@@ -252,10 +252,14 @@
 
     @section scripts{
         <script src="~/Scripts/tinymce/tinymce.js"></script>
-<script>
-    tinyMCE.init(
-        {
-            selector: "textarea"
-        });
+        <script>
+            tinyMCE.init({
+                selector: "textarea",
+                relative_urls: true,
+                remove_script_host: false,
+                document_base_url: "http://www.example.com/path1/",
+                convert_urls: false
+
+            });
         </script>
         }

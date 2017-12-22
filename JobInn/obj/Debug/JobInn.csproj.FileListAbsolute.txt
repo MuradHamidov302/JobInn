@@ -133,3 +133,4 @@ C:\Users\TexnoUsta\Desktop\JobInn\JobInn\bin\Microsoft.AspNet.TelemetryCorrelati
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.csprojResolveAssemblyReference.cache

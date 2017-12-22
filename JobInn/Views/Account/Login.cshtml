@@ -79,7 +79,13 @@
                             <h4>Log in with Your Social Account</h4>
 
                             <ul>
-
+                                <li>
+                                    @*<div class="col-md-4">
+                                        <section id="socialLoginForm">
+                                            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                                        </section>
+                                    </div>*@
+                                </li>
                                 <li> <a href="#" class="fb"><i class="fa fa-facebook"></i>Facebook Login</a> </li>
 
                                 <li> <a href="#" class="gp"><i class="fa fa-google-plus"></i>Google Plus Login</a> </li>
@@ -112,11 +118,9 @@
 </div>
 
 <!--MAIN END-->
-@*</section>
-        </div>
-        <div class="col-md-4">
-            <section id="socialLoginForm">
-                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-            </section>
-        </div>
-    </div>*@
+
+    
+   
+
+
+

@@ -79,27 +79,18 @@ namespace JobInn.Controllers.Pages
         }
 
         // GET: Blogs/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult DeleteBlog(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Blog blog = db.blog.Find(id);
-            if (blog == null)
+            Blog blogs = db.blog.Find(id);
+            if (blogs == null)
             {
                 return HttpNotFound();
             }
-            return View(blog);
-        }
-
-        // POST: Blogs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Blog blog = db.blog.Find(id);
-            db.blog.Remove(blog);
+            db.blog.Remove(blogs);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

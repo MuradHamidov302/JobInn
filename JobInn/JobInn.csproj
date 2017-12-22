@@ -692,6 +692,7 @@
     <Content Include="Views\Home\SearchList.cshtml" />
     <Content Include="Views\Error\ErrorPage.cshtml" />
     <Content Include="Views\Jobs\JobList.cshtml" />
+    <Content Include="Views\Jobseekers\JobseekerList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

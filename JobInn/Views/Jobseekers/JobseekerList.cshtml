@@ -1,0 +1,94 @@
+﻿@model IEnumerable<JobInn.Models.TablePage.Jobseekers.Jobseeker>
+@{
+    ViewBag.Title = "JobseekerList";
+    Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
+}
+
+
+<section class="resumes-section padd-tb">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-9 col-sm-8">
+
+                <div class="resumes-content">
+
+
+                    <h2>Showing Search Resumes</h2>
+                    @foreach (var item in Model.OrderByDescending(item => item.jobseekers_id))
+                    {
+                        <div class="box">
+
+                            <div class="frame">
+                                <a href="~/Jobseekers/Details/@item.jobseekers_id">
+
+                                    @if (item.your_img == null)
+                                    {
+                                        <img style="width:165px;height:165px;" src="~/Content/images/Guest.png" alt="img">
+                                    }
+                                    else
+                                    {
+                                        <img style="width:165px;height:165px;" src="~/Content/images/profile/@item.your_img" alt="img">
+                                    }
+                                </a>
+                            </div>
+
+                            <div class="text-box">
+
+                                <h2><a href="~/Jobseekers/Details/@item.jobseekers_id">@item.full_name</a></h2>
+
+                                <h4>@item.professional_title</h4>
+
+                                <div class="clearfix">
+                                    <strong><i class="fa fa-map-marker"></i>@item.location</strong>
+
+                                    @foreach (var item2 in item.url)
+                                    {
+                                        <a href="@item2.url_link">
+                                            <strong>
+                                                <i class="fa fa-globe"></i>
+                                                @item2.url_name
+                                            </strong>
+                                        </a>
+                                    }
+                                </div>
+                                <span class="price"><i class="fa fa-money"></i>@item.min_rate</span>
+
+                                <div class="tags">
+                                    <a href="~/Jobseekers/Details/@item.jobseekers_id">
+                                        <i class="fa fa-tags"></i>@item.jobcategory.jobcategory_name,
+                                    </a>
+                                    @foreach (var item2 in item.skill)
+                                    {
+                                        <a href="~/Jobseekers/Details/@item.jobseekers_id">@item2.skill_name,</a>
+                                    }
+
+                                </div>
+
+                                <div class="btn-row">
+                                    <a href="~/Jobseekers/Details/@item.jobseekers_id" class="resume"><i class="fa fa-file-text-o"></i>Resume?</a>
+                                    <a href="~/Jobseekers/Details/@item.jobseekers_id" class="contact">@item.jobtype.jobtype_name</a>
+                                    @if (Convert.ToString(Session["UserId"]) == item.user_id)
+                                    {
+                                        <a href="~/Jobseekers/DeleteJobseeker/@item.jobseekers_id" class="resume">Remove</a>
+                                    }
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+
+
+
+                    <div id="loadMore"> <a href="#" class="load-more"><i class="fa fa-user"></i>Load More Jobs</a></div>
+
+                </div>
+            </div>
+
+            </div>
+</div>
+</section>

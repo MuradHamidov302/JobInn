@@ -135,9 +135,9 @@ namespace JobInn.Controllers.Pages
         }
 
         [AllowAnonymous]
-        public ActionResult CommentPartial(int id)
+        public ActionResult CommentPartial(int blog_id)
         {
-            var comment = db.blogcomment.Where(c=>c.blog_id==id).ToList();
+            var comment = db.blogcomment.Where(c=>c.blog_id==blog_id).ToList();
             return View(comment);
         }
     }

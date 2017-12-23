@@ -55,9 +55,9 @@ namespace JobInn
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-               appId: "1816991078374529",
-               appSecret: "29321165857c2ccfc53a3b66346ff1f6");
+            //app.UseFacebookAuthentication(
+            //   appId: "1816991078374529",
+            //   appSecret: "29321165857c2ccfc53a3b66346ff1f6");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

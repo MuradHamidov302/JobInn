@@ -74,18 +74,12 @@
 
                         <a href="#" class="login">Forgot your Password</a> <b>OR</b>
 
-                        <div class="login-social">
+                        @*<div class="login-social">
 
                             <h4>Log in with Your Social Account</h4>
 
                             <ul>
-                                <li>
-                                    @*<div class="col-md-4">
-                                        <section id="socialLoginForm">
-                                            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                                        </section>
-                                    </div>*@
-                                </li>
+                              
                                 <li> <a href="#" class="fb"><i class="fa fa-facebook"></i>Facebook Login</a> </li>
 
                                 <li> <a href="#" class="gp"><i class="fa fa-google-plus"></i>Google Plus Login</a> </li>
@@ -95,7 +89,7 @@
                             </ul>
 
                             <em>You Don’t have an Account? @Html.ActionLink("SIGN UP NOW", "Register")</em>
-                        </div>
+                        </div>*@
 
                      
 
@@ -103,9 +97,15 @@
                         <p>
                             @Html.ActionLink("Forgot your password?", "ForgotPassword")
                         </p>*@
-                }
+                   
 
-            </div>
+                }
+                <div class="login-social">
+                 
+                            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                      
+                    </div>
+                </div>
 
         </div>
 

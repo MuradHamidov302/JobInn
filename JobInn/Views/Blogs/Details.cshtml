@@ -132,21 +132,26 @@
                                     <div class="col-md-12">
                                         <h3>Comments</h3>
                                         <h6 class="reply"></h6>
-                                        <ul>
-                                            
-                                            @foreach (var item in Model.blogcomment)
-                                              {   
-                                                <li>
-                                                    <img class="img-thumbnail" src="~/Content/images/Guest.png" alt="">
-                                                    <div class="block">
-                                                        <h4>@item.user_name   
-                                                        
-                                                        <button class="pull-right btn-rply" data-id="@item.blogcomment_id">Reply</button></h4>
+                                        @*partila comment list*@
 
+                                        <div class="commentpartial">
+                                            <ul>
+
+                                                @foreach (var item in Model.blogcomment)
+                                                {
+                                                    <li>
+                                                        <img class="img-thumbnail" src="~/Content/images/Guest.png" alt="">
+                                                        <div class="block">
+                                                            <h4>
+                                                                @item.user_name
+
+                                                            <button class="pull-right btn-rply" data-id="@item.blogcomment_id">Reply</button>
+                                                        </h4>
                                                         <p>@item.comment_text</p>
-                                                       
+
+
                                                     </div>
-                                                   
+
                                                     <ul>
                                                         @foreach (var item1 in item.commentreply)
                                                         {
@@ -160,14 +165,46 @@
                                                         }
                                                     </ul>
                                                 </li>
-                                            }
-                                           
-                                        </ul>
-                                        
+                                                }
+
+                                            </ul>
+                                        </div>
+                                      
+
+                                        <div class="col-md-10">
+                                            <form role="form">
+
+                                                <div class="row rplys" style="background-color:#F5F5F5;
+                                                                        position:absolute;
+                                                                        padding:15px;
+                                                                        z-index:36;
+                                                                        border-radius:2px;
+                                                                        border:1px solid lightgrey;
+                                                                          display:none; ">
+                                                    <button class="btn btn-close pull-right btn-danger">X</button>
+                                                    <h2>Reaply a Comment</h2>
+                                                    <div class="col-md-4">
+
+                                                        <input name="name1" id="name1" required pattern="[a-zA-Z ]+" type="text" placeholder="Name">
+
+
+                                                        <input name="email1" id="Email1" required pattern="^[a-zA-Z0-9-\_.]+\.[a-zA-Z0-9.]{2,5}$" type="text" placeholder="Email">
+                                                        <input class="Add" type="submit" id="send1" value="submit">
+                                                    </div>
+                                                    <div class="col-md-6">
+
+                                                        <textarea name="comments1" id="comment1" required cols="10" rows="4" placeholder="Comments"></textarea>
+
+                                                    </div>
+
+
+                                                </div>
+
+                                            </form>
+                                        </div>
                                     </div>
                                     
                                 </div>
-                              @* <button class="Add" data-id="@Model.blogcomment.">sdfgyuiop</button>*@
                                 </div>
 
                                 <form role="form">
@@ -189,13 +226,13 @@
                                         </div>
                                         <div class="col-md-12">
 
-                                            <textarea name="comments" id="comment1" required cols="10" rows="10" placeholder="Comments"></textarea>
+                                            <textarea name="commentr" id="commentr" required cols="10" rows="10" placeholder="Comments"></textarea>
 
                                         </div>
 
                                         <div class="col-md-12">
 
-                                            <input class=" Add" data-id="@Model.blog_id" type="submit" id="send" value="submit">
+                                            <input class="Add" data-id="@Model.blog_id" type="submit" id="send" value="submit">
 
                                         </div>
 
@@ -219,7 +256,7 @@
 
                                 <div class="box">
 
-                                    <div class="frame"><a href="#"><img src="images/blog/blog-test-widget.jpg" alt="img"></a></div>
+                                    <div class="frame"><a href="javascript:void(0)"><img src="images/blog/blog-test-widget.jpg" alt="img"></a></div>
 
                                     <div class="text-col">
 
@@ -336,37 +373,63 @@
 
 <script type="text/javascript" >
     $(document).ready(function () {
-        $("#send").click(function () { 
-        var coments = $("#comment1").val();
-        var names = $("#name").val();
-        var emails = $("#Email").val();
-        
-        $.ajax({
-            url: '/Blogs/AddComment/',
-            data: { comment1: coments, blogid:@Model.blog_id, name: names, Email: emails },
+        $("#send").click(function () {
+            var coments = $("#commentr").val();
+            var names = $("#name").val();
+            var emails = $("#Email").val();
+
+            $.ajax({
+                url: '/Blogs/AddComment/',
+                data: { comment: coments, blogid:@Model.blog_id, name: names, Email: emails },
             type: 'POST',
             dataType: 'json',
             success: function (data) {
-              
+
             }
         });
         });
 
 
-        $(".btn-rply").click(function (e) {
+        $("#send1").click(function () {
+        var coment2 = $("#comment1").val();
+        var name2 = $("#name1").val();
+        var email2 = $("#Email1").val();
+        var row = $(".btn-rply").data("id");
+        $.ajax({
+            url: '/Blogs/CommentRply/',
+            data: { comment1: coment2, blogid1:row, name1: name2, Email1: email2 },
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+
+            }
+        });
+        });
+
+
+        $(".btn-rply").click(function () {
+            $(".rplys").fadeIn();
+        })
+        $(".btn-close").click(function () {
+            $(".rplys").fadeOut();
+        })
+
+
+        $(".Add").click(function (e) {
             var row = $(this).data("id");
             //alert(row);
             $.ajax({
                 type: "GET",
-                url: "/Blogs/CommentRply",
+                url: "/Blogs/CommentPartial/",
                 data: { id: row },
                 success: function (data) {
-                    $(".reply").html(data);
+                    $(".commentpartial").html(data);
                 }, error: function () {
                     alert(falase);
                 }
             })
         })
+
 
     })
 </script>}

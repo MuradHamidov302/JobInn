@@ -16,7 +16,7 @@ namespace JobInn.Controllers.Pages
     [Authorize]
     public class BlogsController : Controller
     {
-       ApplicationDbContext db = new ApplicationDbContext();
+        ApplicationDbContext db = new ApplicationDbContext();
 
         [AllowAnonymous]
         // GET: Blogs
@@ -68,7 +68,7 @@ namespace JobInn.Controllers.Pages
                     blog.blog_img = FileYolu;
 
                 }
-               
+
                 db.blog.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -104,40 +104,41 @@ namespace JobInn.Controllers.Pages
             base.Dispose(disposing);
         }
 
-        public ActionResult CommentPartial()
-        {
-            return View(db.blogcomment.ToList());
-        }
+
         [AllowAnonymous]
-        public JsonResult AddComment(string name,string comment1,int blogid,string Email)
+        public JsonResult AddComment(string name, string comment, int blogid, string Email)
         {
-          
-            
-                db.blogcomment.Add(new BlogComment
-                {
-                    user_name = name,
-                    email = Email,
-                    comment_text = comment1,
-                    blog_id = blogid
-                });
-                db.SaveChanges();
-            
-            return Json(false,JsonRequestBehavior.AllowGet);
-        }
-        [AllowAnonymous]
-        public ActionResult CommentRply(int? id)
-        {
-            return View();
-        }
-        [HttpPost]
-        [AllowAnonymous]
-        public  ActionResult CommentRply(CommentReply rply,int? id)
-        {
-            BlogComment blogcomment = db.blogcomment.Find(id);
-            rply.blogcomment_id = blogcomment.blogcomment_id;
-            db.commentreply.Add(rply);
+            db.blogcomment.Add(new BlogComment
+            {
+                user_name = name,
+                email = Email,
+                comment_text = comment,
+                blog_id = blogid
+            });
             db.SaveChanges();
-            return View(rply);
+
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+        [AllowAnonymous]
+        public JsonResult CommentRply(string name1, string comment1, int blogid1, string Email1)
+        {
+            db.commentreply.Add(new CommentReply
+            {
+                user_name = name1,
+                email = Email1,
+                comment_text = comment1,
+                blogcomment_id = blogid1
+            });
+            db.SaveChanges();
+
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        public ActionResult CommentPartial(int id)
+        {
+            var comment = db.blogcomment.Where(c=>c.blog_id==id).ToList();
+            return View(comment);
         }
     }
 }

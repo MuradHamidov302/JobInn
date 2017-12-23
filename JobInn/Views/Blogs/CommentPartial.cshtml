@@ -1,0 +1,40 @@
+﻿@model IEnumerable<JobInn.Models.TablePage.Blogs.BlogComment>
+@{
+    ViewBag.Title = "CommentPartial";
+    Layout = null;
+}
+
+<ul>
+
+    @foreach (var item in Model)
+    {
+        <li>
+            <img class="img-thumbnail" src="~/Content/images/Guest.png" alt="">
+            <div class="block">
+                <h4>
+                    @item.user_name
+
+                <button class="pull-right btn-rply" data-id="@item.blogcomment_id">Reply</button>
+            </h4>
+            <p>@item.comment_text</p>
+
+
+        </div>
+
+        <ul>
+            @foreach (var item1 in item.commentreply)
+            {
+                <li>
+                    <img class="img-thumbnail" src="~/Content/images/Guest.png" alt="">
+                    <div class="block">
+                        <h4>@item1.user_name</h4>
+                        <p>@item1.comment_text</p>
+                    </div>
+                </li>
+            }
+        </ul>
+    </li>
+    }
+
+</ul>
+

@@ -2,8 +2,8 @@
 <!--USER OPTION COLUMN START-->
 
 <div class="user-option-col">
-    @if (Request.IsAuthenticated )
-            {
+    @if (Request.IsAuthenticated)
+    {
         <div class="thumb">
 
             <div class="dropdown">
@@ -42,11 +42,11 @@
                     <li>
                    
                         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
-                         {
+                        {
                             @Html.AntiForgeryToken()
 
                               <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                         }
+                        }
                     </li>
                     
                 </ul>
@@ -86,3 +86,14 @@
 </div>
 
 <!--USER OPTION COLUMN END-->
+
+@*//user auto logout*@
+    @if (Session["UserId"] == null)
+    {
+        <script>
+                var a = document.body.querySelector("#logoutForm");
+                a.submit();
+        </script>
+    }
+
+

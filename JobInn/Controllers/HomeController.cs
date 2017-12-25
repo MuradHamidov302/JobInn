@@ -30,16 +30,17 @@ namespace JobInn.Controllers
         }
         public ActionResult JobPartial(int? Page)
         {
-            var job = db.job.OrderBy(x=>x.clossing_date).ToList().ToPagedList(Page?? 1, 3);
+            var job = db.job.OrderBy(x => x.clossing_date).ToList().ToPagedList(Page ?? 1, 3);
             return View(job);
         }
 
-        public ActionResult SearchList(string search=null, string citys=null,string jobcategory=null)
+        public ActionResult SearchList(string search = null, string citys = null, string jobcategory = null)
         {
             var Search = db.job.Where(j => j.job_title.Contains(search)).Where(c => c.city.city_name.Contains(citys)).Where(c => c.jobcategory.jobcategory_name.Contains(jobcategory)).ToList();
-          
+
             return View(Search.OrderByDescending(item => item.clossing_date));
         }
+
         
     }
 }

@@ -426,6 +426,10 @@ namespace JobInn.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            Session["UserId"] = null;
+            Session["Img"] = null;
+            Session["UserName"] =null;
+            Session["Email"] =null;
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }

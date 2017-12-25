@@ -1,5 +1,6 @@
-﻿@model IEnumerable<JobInn.Models.TablePage.Employers.Job>
-
+﻿@model IPagedList<JobInn.Models.TablePage.Employers.Job>
+@using PagedList
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Job Search";
     Layout = "~/Views/Shared/_JobInn_Layout.cshtml";
@@ -102,10 +103,15 @@
 
                             </ul>
 
-                            <div id="loadMore"> <a href="#" class="load-more"><i class="fa fa-user"></i>Load More Jobs</a></div>
-
+                           
                         </div>
-
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <div class="pagedList pagination-lg">
+                                    @Html.PagedListPager(Model, Page => Url.Action("JobList", new { Page }), PagedListRenderOptions.Classic)
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 

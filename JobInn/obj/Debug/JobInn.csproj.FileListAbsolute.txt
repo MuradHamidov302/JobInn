@@ -187,4 +187,3 @@ C:\Users\TexnoUsta\Desktop\JobInn\JobInn\bin\System.Net.Http.WebRequest.xml
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\bin\Org.Mentalis.Security.Cryptography.xml
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\bin\Mono.Math.xml
 C:\Users\TexnoUsta\Desktop\JobInn\JobInn\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\TexnoUsta\Desktop\JobInn\JobInn\obj\Debug\JobInn.csprojResolveAssemblyReference.cache

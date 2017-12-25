@@ -24,6 +24,7 @@ namespace JobInn.Models.TablePage.Blogs
         [StringLength(100)]
         public string blog_smallhead { get; set; }
         [Column(TypeName = "ntext")]
+        [UIHint("tinymce_full_compressed"), AllowHtml]
         public string blog_smalltext { get; set; }
         [Column(TypeName = "nvarchar")]
         public string blog_img { get; set; }

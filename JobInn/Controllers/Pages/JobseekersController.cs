@@ -30,7 +30,7 @@ namespace JobInn.Controllers.Pages
             return View(vm);
         }
 
-
+        [AllowAnonymous]
         public ActionResult JobseekerList(string Search = null)
         {
             var search = db.jobseeker.Where(j => j.professional_title.Contains(Search)).ToList();

@@ -40,5 +40,6 @@ namespace JobInn.Controllers
           
             return View(Search.OrderByDescending(item => item.clossing_date));
         }
+        
     }
 }

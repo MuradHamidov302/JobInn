@@ -746,7 +746,6 @@
     <Content Include="Views\PrivacyPolicies\Index.cshtml" />
     <Content Include="Views\Contacts\Create.cshtml" />
     <Content Include="Views\Shared\_RigthMenuPartial.cshtml" />
-    <Content Include="Views\Home\JobPartial.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
@@ -766,6 +765,7 @@
     <Content Include="Views\Jobs\JobList.cshtml" />
     <Content Include="Views\Jobseekers\JobseekerList.cshtml" />
     <Content Include="Views\Blogs\CommentPartial.cshtml" />
+    <Content Include="Views\Home\JobPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

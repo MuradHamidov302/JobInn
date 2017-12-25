@@ -29,10 +29,10 @@ namespace JobInn.Controllers.Pages
             vm.jobtype=db.jobtype.ToList();
             return View(vm);
         }
-
-        public ActionResult JobList(string Search=null)
+        [AllowAnonymous]
+        public ActionResult JobList(string Search=null, int Page=1)
         {
-            var search = db.job.Where(j => j.job_title.Contains(Search)).ToList();
+            var search = db.job.Where(j => j.job_title.Contains(Search)).ToList().ToPagedList(Page, 2);
 
             return View(search);
         }

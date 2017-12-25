@@ -118,7 +118,7 @@
                     <div id="content-area">
 
                         <h2>Recent Hot Jobs</h2>
-
+                    
                         <ul id="myList">
                             @foreach (var item in Model.job.OrderByDescending(item=>item.clossing_date))
                             {
@@ -166,7 +166,8 @@
 
 
                         </ul>
-
+                   
+                       
                         @*<div class="row">
                             <div class="col-md-8 text-center">
                                 <div class="pagedList pagination-lg">
@@ -297,5 +298,6 @@
 </div>
 
 <!--MAIN END-->
+
 
 

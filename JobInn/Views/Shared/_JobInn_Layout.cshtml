@@ -195,7 +195,7 @@
                                 <ul class="nav navbar-nav" id="nav">
 
                                     <li>
-                                        @Html.ActionLink("Home","Index","Home")
+                                        @Html.ActionLink("Home", "Index", "Home")
 
                                     </li>
 
@@ -209,10 +209,10 @@
 
                                         </ul>
                                     </li>
-                                 
+
                                     <li>
-                                      
-                                      <a href="javascript:void(0)">Jobs</a>
+
+                                        <a href="javascript:void(0)">Jobs</a>
                                         <ul>
 
                                             <li>@Html.ActionLink("Jobs Listing", "Index", "Jobs")</li>
@@ -228,8 +228,8 @@
 
                                         <ul>
 
-                                            <li>@Html.ActionLink("Companies Listing", "Index","Companies")</li>
-                                          
+                                            <li>@Html.ActionLink("Companies Listing", "Index", "Companies")</li>
+
 
                                             <li>@Html.ActionLink("Company Form", "Create", "Companies")</li>
 
@@ -241,20 +241,20 @@
                                         <a href="javascript:void(0)">Blogs</a>
 
                                         <ul>
-                                            <li>@Html.ActionLink("Blogs Listing","Index","Blogs")</li>
+                                            <li>@Html.ActionLink("Blogs Listing", "Index", "Blogs")</li>
                                             <li>@Html.ActionLink("Blog Form", "Create", "Blogs")</li>
                                         </ul>
 
                                     </li>
-                                    <li>@Html.ActionLink("Privacy & Policies", "Index","PrivacyPolicies")</li>
-                                    <li>@Html.ActionLink("Contact", "Create","Contacts")</li>
+                                    <li>@Html.ActionLink("Privacy & Policies", "Index", "PrivacyPolicies")</li>
+                                    <li>@Html.ActionLink("Contact", "Create", "Contacts")</li>
 
                                 </ul>
 
                             </div>
 
                         </nav>
-
+                      
                     </div>
 
                     <!--NAVIGATION END-->
@@ -319,8 +319,24 @@
                 <div class="container">
 
                     <div class="bottom-row">
-                        <strong class="copyrights">JobInn &copy; 2018, All Rights Reserved, Developed By: <a href="http://crunchpress.com/" target="_blank">Code Academy</a></strong>
 
+                        @*google page translate code start*@
+
+                        <div  id="google_translate_element"></div>
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, multilanguagePage: true }, 'google_translate_element');
+                            }
+                        </script>
+                        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                        @*google page translate code end*@
+
+
+
+
+                        <strong class="copyrights">JobInn &copy; 2018, All Rights Reserved, Developed By: <a href="http://crunchpress.com/" target="_blank">Code Academy</a></strong>
+                        
+                  
                         <div class="footer-social">
 
                             <ul>
